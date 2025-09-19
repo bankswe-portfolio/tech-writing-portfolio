@@ -32,8 +32,8 @@ nav:
     - Horizon3.ai - NodeZero Tripwires Redline: case-studies\horizon3ai-tripwires-redline.md
     - LangChain - Agents vs Chains Explainer: case-studies\longchain-chains-vs-agents.md
   - Samples:
-    - How-to: samples/how-to-deploy-flask-on-docker.md
-    - Concept: samples/understanding-rbac.md
-    - Reference: samples/cli-reference-sample.md
+    - How-to: samples\how-to-deploy-flask-on-docker.md
+    - Concept: samples\understanding-rbac.md
+    - Reference: samples\cli-reference-sample.md
  
   - About the Portfolio: about/about.md
