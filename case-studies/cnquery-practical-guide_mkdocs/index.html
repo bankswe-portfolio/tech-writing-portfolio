@@ -1,0 +1,777 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Selected samples demonstrating how-to, conceptual, and reference documentation using a docs-as-code workflow.">
+      
+      
+      
+        <link rel="canonical" href="https://bankswe-portfolio.github.io/tech-writing-portfolio/case-studies/cnquery-practical-guide_mkdocs/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../horizon3ai-tripwires-redline/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Mondoo - cnquery Practical Guide - William Banks — Technical Writing Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#getting-started-with-cnquery-a-practical-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="William Banks — Technical Writing Portfolio" class="md-header__button md-logo" aria-label="William Banks — Technical Writing Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            William Banks — Technical Writing Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mondoo - cnquery Practical Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bankswe-portfolio/tech-writing-portfolio" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="William Banks — Technical Writing Portfolio" class="md-nav__button md-logo" aria-label="William Banks — Technical Writing Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    William Banks — Technical Writing Portfolio
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bankswe-portfolio/tech-writing-portfolio" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Case Studies
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Case Studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mondoo - cnquery Practical Guide
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../horizon3ai-tripwires-redline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Horizon3.ai - NodeZero Tripwires Redline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../longchain-chains-vs-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LangChain - Agents vs Chains Explainer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Samples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Samples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../samples/how-to-deploy-flask-on-docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How-to
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../samples/understanding-rbac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Concept
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../samples/cli-reference-sample/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About the Portfolio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/bankswe-portfolio/tech-writing-portfolio/blob/main/docs/case-studies/cnquery-practical-guide_mkdocs.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="getting-started-with-cnquery-a-practical-guide">Getting Started with cnquery: A Practical Guide<a class="headerlink" href="#getting-started-with-cnquery-a-practical-guide" title="Permanent link">&para;</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Memo on Writing Sample: cnquery Practical Guide</p>
+<p>This is <em>not</em> official Mondoo documentation.</p>
+<p>This guide is a demonstration piece created to showcase my technical writing style. 
+I selected <code>cnquery</code>, an open-source tool from Mondoo, because it is publicly available, technically rich, and well suited to illustrating how I approach developer-facing documentation.</p>
+<p>I started from Mondoo’s <a href="https://mondoo.com/docs/cnquery/">official cnquery documentation</a> and reworked the material into a <strong>Practical Guide</strong>. 
+My focus was not only on clear, step-by-step instructions, but also on adding the context that helps readers understand <em>what</em> to do, <em>how</em> to do it, and most importantly, <em>why</em> it matters. Along the way I emphasized:</p>
+<ul>
+<li><strong>Scenario-based workflows</strong> (for example, checking certificate expiry to prevent downtime)</li>
+<li><strong>Explanatory bridges</strong> that connect technical steps to developer and security outcomes</li>
+<li><strong>Consistent structure and readability</strong> with clear headings, code examples, and outputs</li>
+<li><strong>Forward-looking context</strong> showing how standalone use connects to broader security practices</li>
+</ul>
+<p>This guide reflects how I like to approach technical content:</p>
+<ul>
+<li>Bringing <strong>clarity and depth</strong> to material that can otherwise feel reference-heavy</li>
+<li>Creating resources that support <strong>both hands-on adoption and higher-level understanding</strong></li>
+<li>Structuring content so it’s approachable for newcomers while still valuable for experienced users</li>
+<li>Thinking “<strong>docs, but beyond docs</strong>” — content that educates, reassures, and helps readers see the bigger picture</li>
+</ul>
+</div>
+<h1 id="getting-started-with-cnquery-a-guided-introduction">Getting Started with cnquery: A Guided Introduction<a class="headerlink" href="#getting-started-with-cnquery-a-guided-introduction" title="Permanent link">&para;</a></h1>
+<p><strong>What if your systems could answer your questions directly?</strong>  </p>
+<p>Forget juggling scripts or scrolling through endless logs. 
+cnquery lets you <em>ask your infrastructure plain questions</em> — and get clear answers, instantly.
+It’s part of Mondoo’s mission to make security <strong>actionable, approachable, and trustworthy</strong>.</p>
+<div class="admonition info">
+<p class="admonition-title">Who this is for</p>
+<p>New to Mondoo or cnquery. 
+Comfortable with a terminal. Want fast, confident answers without reading a full reference.</p>
+</div>
+<p><strong>In 10 minutes you’ll:</strong></p>
+<ul>
+<li>Install cnquery</li>
+<li>Run 3 practical queries (OS, TLS expiry, privileged users)</li>
+<li>Know when to use <strong>cnquery</strong> vs <strong>cnspec</strong></li>
+<li>See how this scales into the Mondoo Platform</li>
+</ul>
+<h2 id="1-what-is-cnquery">1) What is cnquery?<a class="headerlink" href="#1-what-is-cnquery" title="Permanent link">&para;</a></h2>
+<p>At its core, <strong>cnquery</strong> is an open source, cloud-native command-line tool powered by <strong><a href="https://mondoo.com/docs/mql/home/">MQL (Mondoo Query Language)</a></strong>. 
+It integrates with hundreds of resources so you can ask direct questions about cloud, OS, SaaS, containers, and more. 
+When you run a query, you point cnquery at a <strong>target</strong>. 
+Targets can be your <strong>local machine</strong>, a <strong>remote host</strong> over SSH/WinRM, a <strong>website</strong> for TLS checks, a <strong>cloud account</strong>, a <strong>container</strong>, and more. </p>
+<div class="admonition info">
+<p class="admonition-title">Why this matters</p>
+<p>Most of us cobble together scripts, grep, and half-remembered commands when problems hit.
+cnquery gives you one consistent way to interrogate your systems — without guesswork.</p>
+</div>
+<h2 id="2-install-cnquery">2) Install cnquery<a class="headerlink" href="#2-install-cnquery" title="Permanent link">&para;</a></h2>
+<p>Installation scripts come directly from Mondoo’s distribution. 
+In most environments they can be run as-is; for stricter environments see <a href="https://mondoo.com/docs/cnquery/providers/">Provider Management</a>.</p>
+<p><strong>Linux &amp; macOS (curl script):</strong></p>
+<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-sSL<span class="w"> </span>https://install.mondoo.com/sh<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+<p><strong>Windows (PowerShell):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nb">Set-ExecutionPolicy</span> <span class="n">Unrestricted</span> <span class="n">-Scope</span> <span class="k">Process</span> <span class="n">-Force</span>
+<span class="no">[System.Net.ServicePointManager]</span><span class="p">::</span><span class="n">SecurityProtocol</span> <span class="p">=</span> <span class="no">[System.Net.ServicePointManager]</span><span class="p">::</span><span class="n">SecurityProtocol</span> <span class="o">-bor</span> <span class="n">3072</span>
+<span class="nb">iex </span><span class="p">((</span><span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="p">).</span><span class="n">DownloadString</span><span class="p">(</span><span class="s1">&#39;https://install.mondoo.com/ps1/cnquery&#39;</span><span class="p">))</span>
+<span class="nb">Install-Mondoo</span> <span class="n">-Product</span> <span class="n">cnquery</span>
+</code></pre></div>
+<p><strong>Verify installation:</strong></p>
+<div class="highlight"><pre><span></span><code>cnquery<span class="w"> </span>version
+</code></pre></div>
+<p><strong>Expected output:</strong></p>
+<div class="highlight"><pre><span></span><code>cnquery vX.Y.Z #e.g. v8.3.0
+</code></pre></div>
+<h2 id="3-your-first-queries">3) Your first queries<a class="headerlink" href="#3-your-first-queries" title="Permanent link">&para;</a></h2>
+<p>You can run one-off queries or use the interactive shell. 
+One-off mode is perfect for quick checks you might script into automation, while the interactive shell is best for exploring resources and learning the language.</p>
+<p>In these examples we use the <strong>local</strong> target (your current machine).<br />
+Other common targets include <code>ssh user@host</code>, <code>host mondoo.com</code>, <code>docker</code>, <code>k8s</code>, and cloud providers like <code>aws</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">Common Targets</p>
+<ul>
+<li><code>local</code> → your current machine</li>
+<li><code>ssh user@host</code> → remote Linux/Windows hosts</li>
+<li><code>host &lt;domain&gt;</code> → websites (for TLS checks)</li>
+<li><code>docker</code>, <code>k8s</code> → containers and clusters</li>
+<li><code>aws</code>, <code>gcp</code>, <code>azure</code> → cloud accounts</li>
+</ul>
+<p>See full list in <a href="https://mondoo.com/docs/cnquery/cnquery-supported/">Supported Query Targets</a>.</p>
+</div>
+<p><strong>Option A — one-off:</strong></p>
+<div class="highlight"><pre><span></span><code>cnquery<span class="w"> </span>run<span class="w"> </span><span class="nb">local</span><span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;os.name&quot;</span>
+</code></pre></div>
+<p><strong>Option B — shell (recommended for exploring):</strong></p>
+<div class="highlight"><pre><span></span><code>cnquery<span class="w"> </span>shell<span class="w"> </span><span class="nb">local</span>
+<span class="nb">help</span><span class="w"> </span>os
+</code></pre></div>
+<p>Then run queries like <code>os.name</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">Why this matters</p>
+<p>cnquery gives you two ways to work: fast one-off commands that you can drop into scripts, or a dedicated shell for exploration. 
+This flexibility means you can start small and scale up as your needs grow, without changing tools.</p>
+</div>
+<h3 id="example-1-what-os-am-i-running">Example 1 — “What OS am I running?”<a class="headerlink" href="#example-1-what-os-am-i-running" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>cnquery<span class="w"> </span>run<span class="w"> </span><span class="nb">local</span><span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;os.name&quot;</span>
+</code></pre></div>
+<p><strong>Output (example):</strong></p>
+<div class="highlight"><pre><span></span><code>Ubuntu
+</code></pre></div>
+<p><code>os.name</code> is provided by the OS pack.</p>
+<div class="admonition info">
+<p class="admonition-title">Why this matters</p>
+<p>Sometimes the simplest question is the most important. 
+Whether you’re jumping between development, staging, and production machines or auditing servers you haven’t touched in months, this query gives you a consistent way to confirm exactly what system you’re on. 
+No need to recall which platform uses <code>uname</code> or <code>lsb_release</code> — cnquery provides one universal approach.</p>
+</div>
+<h3 id="example-2-are-my-tls-certs-about-to-expire">Example 2 — “Are my TLS certs about to expire?”<a class="headerlink" href="#example-2-are-my-tls-certs-about-to-expire" title="Permanent link">&para;</a></h3>
+<p>Check a public host’s certificates (30-day horizon):</p>
+<div class="highlight"><pre><span></span><code>cnquery<span class="w"> </span>shell<span class="w"> </span>host<span class="w"> </span>mondoo.com
+tls.certificates.where<span class="o">(</span>notAfter<span class="w"> </span>-<span class="w"> </span>time.now<span class="w"> </span>&lt;<span class="w"> </span><span class="m">30</span><span class="w"> </span>*<span class="w"> </span>time.day<span class="o">)</span><span class="w"> </span><span class="o">{</span><span class="w"> </span>subject.dn<span class="w"> </span>issuer.dn<span class="w"> </span>notAfter<span class="w"> </span><span class="o">}</span>
+</code></pre></div>
+<ul>
+<li><code>host mondoo.com</code> targets a website (SSL/TLS).  </li>
+<li><code>notAfter</code> is the certificate expiry field; we compare it with <code>time.now</code>.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Why this matters</p>
+<p>Few issues cause more disruption than an expired TLS certificate. 
+Customers see a browser warning, trust drops, and your team is forced into emergency response. 
+This query helps you stay ahead by flagging certificates that are close to expiring, giving you time to renew.</p>
+</div>
+<h3 id="example-3-who-has-sudo-access">Example 3 — “Who has sudo access?”<a class="headerlink" href="#example-3-who-has-sudo-access" title="Permanent link">&para;</a></h3>
+<p>On many Linux distros, privileged users belong to the <code>sudo</code> group:</p>
+<div class="highlight"><pre><span></span><code>cnquery<span class="w"> </span>run<span class="w"> </span><span class="nb">local</span><span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;group(&quot;sudo&quot;) { members { name } }&#39;</span>
+</code></pre></div>
+<p>This directly queries the <code>group</code> resource, then lists its <code>members</code>. Swap <code>sudo → wheel</code> (RHEL/Fedora) or <code>Administrators</code> (Windows).</p>
+<div class="admonition info">
+<p class="admonition-title">Why this matters</p>
+<p>Privilege management is a foundation of security. 
+A single unexpected user with administrator rights can open the door to major risk. 
+This query gives you immediate visibility into who holds elevated access, so you can validate against your intended policy without manual parsing.</p>
+</div>
+<h2 id="4-real-world-scenario-responding-to-a-cve">4) Real-world scenario: Responding to a CVE<a class="headerlink" href="#4-real-world-scenario-responding-to-a-cve" title="Permanent link">&para;</a></h2>
+<p>A CVE affecting <code>openssl</code> just dropped. Find impacted hosts fast:</p>
+<div class="highlight"><pre><span></span><code>cnquery<span class="w"> </span>run<span class="w"> </span><span class="nb">local</span><span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;packages.where(name == &#39;openssl&#39;) { name version }&quot;</span>
+</code></pre></div>
+<p><code>packages</code> is the list of OS packages. Each <code>package</code> contains fields like <code>name</code> and <code>version</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">Why this matters</p>
+<p>When a new vulnerability is announced, speed matters. 
+You need to know immediately which of your systems are running affected versions. 
+cnquery lets you search installed packages in seconds, giving you clear visibility and the confidence to prioritize patching quickly — without assembling ad-hoc scripts under pressure.</p>
+</div>
+<h2 id="5-where-cnquery-fits-with-the-mondoo-platform">5) Where cnquery fits with the Mondoo Platform<a class="headerlink" href="#5-where-cnquery-fits-with-the-mondoo-platform" title="Permanent link">&para;</a></h2>
+<p>By itself, cnquery gives you instant answers. 
+But its real power is as a <strong>springboard into automation</strong>:</p>
+<ul>
+<li>Feed results into cnspec for repeatable compliance checks  </li>
+<li>Pipe data into the <strong>Mondoo Platform</strong> to visualize risks across fleets  </li>
+<li>Turn one-off discoveries (like that expiring cert) into <strong>policies that prevent recurrence</strong></li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Why this matters</p>
+<p>cnquery is more than a standalone tool — it’s the entry point into Mondoo’s larger ecosystem. The same queries you run today can evolve into policies, dashboards, and automated workflows tomorrow. You gain immediate visibility while building toward scalable, repeatable security practices.</p>
+</div>
+<h2 id="6-faq">6) FAQ<a class="headerlink" href="#6-faq" title="Permanent link">&para;</a></h2>
+<p><strong>When should I use <code>cnquery</code> vs <code>cnspec</code>?</strong></p>
+<p>Use <strong>cnquery</strong> to <em>ask questions and explore</em> with ad‑hoc MQL. 
+Use <strong>cnspec</strong> when you want <em>repeatable policy checks</em> (benchmarks, remediations, CI/CD gates). 
+See examples throughout the cnspec docs</p>
+<p><strong>Do I need to specify a “target”?</strong></p>
+<p>Yes. 
+Common ones are <code>local</code>, <code>ssh user@host</code>, <code>host &lt;domain&gt;</code>, cloud providers like <code>aws</code>, and many more—see the Supported Query Targets page for examples. 
+See the full list in <a href="https://mondoo.com/docs/cnquery/cnquery-supported/">Supported Query Targets</a>.</p>
+<p><strong>Is cnquery safe in production?</strong></p>
+<p>cnquery queries configuration/state; it doesn’t alter your workloads. 
+It may write provider plugins unless you disable auto‑update; for strict read‑only environments, <strong>pre‑install providers</strong> and <strong>turn off provider auto‑update</strong>.</p>
+<h2 id="7-where-to-go-next">7) Where to go next<a class="headerlink" href="#7-where-to-go-next" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Learn <strong><a href="https://mondoo.com/docs/mql/home/">MQL basics</a></strong> and <strong><a href="https://mondoo.com/docs/mql/mql.write/">write effective MQL</a></strong>.</li>
+<li>Explore <strong><a href="https://mondoo.com/docs/cnquery/cnquery-query/">Query Your Infrastructure</a></strong> and the <strong><a href="https://mondoo.com/docs/mql/resources/">MQL Resource Reference</a></strong>.</li>
+<li>When you’re ready for policy‑as‑code and continuous assessment, move to <strong>cnspec</strong> and the Mondoo Platform.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "content.code.copy", "content.action.edit", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
