@@ -1,0 +1,31 @@
+site_name: William Banks — Technical Writing Portfolio
+site_description: Selected samples demonstrating how-to, conceptual, and reference documentation using a docs-as-code workflow.
+site_url: https://bankswe-portfolio.github.io/tech-writing-portfolio
+repo_url: https://github.com/bankswe-portfolio/tech-writing-portfolio
+edit_uri: blob/main/docs/
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - content.code.copy
+    - content.action.edit
+    - search.suggest
+    - search.highlight
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - codehilite
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.tabbed
+  - pymdownx.snippets
+nav:
+  - Home: index.md
+  - Samples:
+      - How-to: samples/how-to-deploy-flask-on-docker.md
+      - Concept: samples/understanding-rbac.md
+      - Reference: samples/cli-reference-sample.md
+  - About the Portfolio: about/about.md
