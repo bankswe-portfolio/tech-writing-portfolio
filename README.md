@@ -1,19 +1,25 @@
 # Technical Writing Portfolio
 
-This repository powers my live portfolio site:  
 👉 **[View the site](https://bankswe-portfolio.github.io/tech-writing-portfolio/)**
 
-The focus is on **case studies**—self-contained stories that show how I approach technical writing in practice. Each one highlights a different product, audience, or challenge, and demonstrates how I turn complexity into clarity.
+This project contains my portfolio of technical writing case studies. 
+Each study focuses on a real scenario and demonstrates how I approach documentation—structuring information, addressing reader needs, and presenting technical details with care.
 
-- 🗂 **Case Studies:** real-world scenarios with problem → solution → docs strategy  
-- 🧾 **Source:** Markdown under `/docs`, built with a docs-as-code workflow  
-- ✍️ **Goal:** show documentation not as an afterthought, but as part of the product itself  
-
----
+- 🗂 **Case Studies:** practical examples with real product contexts  
+- 🧾 **Source:** Markdown under `/docs` using a docs-as-code workflow  
+- ✍️ **Goal:** treat documentation with the same rigor as code and product  
 
 ## Local development
-To spin up the site locally:
+Preview the site locally:
 
-```bash
-pip install mkdocs mkdocs-material pymdown-extensions
-mkdocs serve
+    pip install mkdocs mkdocs-material pymdown-extensions
+    mkdocs serve
+
+## Deployment
+Choose one method:
+
+- One-off publish:  
+
+      mkdocs gh-deploy --force
+
+- Continuous deploy: push to `main` with GitHub Actions enabled
