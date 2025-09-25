@@ -24,7 +24,7 @@ Along the way, I’ve authored comprehensive developer guides, built automated d
 
 What drives me is clarity: giving engineers, developers, and product teams the confidence to adopt and extend complex technology.
 
-Connect with me on [LinkedIn](https://www.linkedin.com/in/william-banks-7a736793/) for my full background.
+Connect with me on [LinkedIn](https://www.linkedin.com/in/william-banks-7a736793/) for my full background, or check out [my Resume](https://docs.google.com/document/d/1yv8pqGzOZew67R3HoX8QbaK1VehR5nlt/export?format=pdf)
 
 ## Skills & Tools
 
@@ -44,7 +44,7 @@ Connect with me on [LinkedIn](https://www.linkedin.com/in/william-banks-7a736793
 
 Each case study demonstrates how I tackle a specific documentation challenge — whether creating new material, editing existing content, or balancing conceptual depth with practical guidance.
 
-[Explore the Case Studies →](./samples/)
+[Explore the Case Studies →](./case-studies/)
 
 ## Let’s Connect
 
