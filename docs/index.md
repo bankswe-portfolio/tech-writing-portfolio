@@ -48,6 +48,6 @@ Each case study demonstrates how I tackle a specific documentation challenge —
 
 ## Let’s Connect
 
-I’m currently looking for technical writing roles in developer experience, SaaS, or security tooling.  
+I’m currently looking for technical writing roles in SaaS, Cybersecurity, AI and other tech fields.  
 
 Reach me at **your.email@example.com** or on [LinkedIn](https://www.linkedin.com/in/william-banks-7a736793/).  
