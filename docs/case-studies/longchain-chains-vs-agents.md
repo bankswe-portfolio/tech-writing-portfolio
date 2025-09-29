@@ -1,14 +1,15 @@
 
 # Chains vs. Agents in LangChain
 
-!!! info "About this case study"
-    This is *not* official LangChain documentation.  
-    
-    This is a demonstration sample created for my portfolio.  
-    It explains a core LangChain concept — **Chains vs. Agents** — in a clear, approachable way.  
-    
-    Claims and definitions are aligned to the latest LangChain & LangGraph docs (v0.2).  
-    [LangChain Introduction](https://python.langchain.com/docs/introduction/) | [Concepts: Agents](https://python.langchain.com/docs/concepts/agents/) | [LangGraph: Why LangGraph](https://langchain-ai.github.io/langgraph/concepts/why-langgraph/) | [LangSmith Docs](https://docs.langchain.com/langsmith/home)
+!!! note "About This Writing Sample"
+    This is *not* official LangChain documentation.
+
+    I created this guide independently as part of my portfolio to illustrate how I explain complex developer concepts.  
+    I chose the topic **Chains vs. Agents** because it sits at the core of LangChain’s design philosophy, yet is often a source of confusion for new users.
+
+    All claims and definitions are aligned with the latest LangChain & LangGraph docs (v0.2).  
+    References: [LangChain Introduction](https://python.langchain.com/docs/introduction/) | [Concepts: Agents](https://python.langchain.com/docs/concepts/agents/) | [LangGraph: Why LangGraph](https://langchain-ai.github.io/langgraph/concepts/why-langgraph/) | [LangSmith Docs](https://docs.langchain.com/langsmith/home)
+
 
 ## Welcome: Why You Should Care
 

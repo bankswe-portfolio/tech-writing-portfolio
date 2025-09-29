@@ -1,26 +1,28 @@
 
 # Getting Started with cnquery: A Practical Guide
 
-!!! note "Memo on Writing Sample: cnquery Practical Guide"
+# Getting Started with cnquery: A Practical Guide
+
+!!! note "About This Writing Sample"
     This is *not* official Mondoo documentation.
 
-    This guide is a demonstration piece created to showcase my technical writing style. 
-    I selected `cnquery`, an open-source tool from Mondoo, because it is publicly available, technically rich, and well suited to illustrating how I approach developer-facing documentation.
+    I created this guide as part of a job application to demonstrate my approach to developer-facing documentation.  
+    I chose `cnquery`, an open-source tool from Mondoo, because it is publicly available, technically rich, and well suited for showing how I translate complex material into clear, scenario-driven guidance.
 
-    I started from Mondoo’s [official cnquery documentation](https://mondoo.com/docs/cnquery/) and reworked the material into a **Practical Guide**. 
-    My focus was not only on clear, step-by-step instructions, but also on adding the context that helps readers understand _what_ to do, _how_ to do it, and most importantly, _why_ it matters. Along the way I emphasized:
+    Starting from Mondoo’s [official cnquery documentation](https://mondoo.com/docs/cnquery/), I reworked the material into a **Practical Guide** that emphasizes:
 
-    - **Scenario-based workflows** (for example, checking certificate expiry to prevent downtime)
-    - **Explanatory bridges** that connect technical steps to developer and security outcomes
-    - **Consistent structure and readability** with clear headings, code examples, and outputs
-    - **Forward-looking context** showing how standalone use connects to broader security practices
+    - **Scenario-based workflows** (e.g., checking certificate expiry to prevent downtime)  
+    - **Explanatory bridges** linking technical steps to developer and security outcomes  
+    - **Consistent structure and readability** with clear headings, examples, and outputs  
+    - **Forward-looking context** connecting standalone use to broader security practices  
 
-    This guide reflects how I like to approach technical content:
+    This guide reflects my documentation philosophy:
 
-    - Bringing **clarity and depth** to material that can otherwise feel reference-heavy
-    - Creating resources that support **both hands-on adoption and higher-level understanding**
-    - Structuring content so it’s approachable for newcomers while still valuable for experienced users
-    - Thinking “**docs, but beyond docs**” — content that educates, reassures, and helps readers see the bigger picture
+    - Clarity and depth over bare reference  
+    - Resources that support both **hands-on adoption** and **higher-level understanding**  
+    - Structure that works for newcomers while rewarding experienced users  
+    - Content that feels like **part of the product experience**, not an afterthought
+
 
 # Getting Started with cnquery: A Guided Introduction
 

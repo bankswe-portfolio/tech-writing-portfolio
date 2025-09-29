@@ -3,14 +3,17 @@
 
 Welcome — thanks for visiting.
 
-This site collects case studies that show how I approach technical writing in practice.  
-Each study walks through a real scenario, combining the problem, the solution, and the documentation choices that tie them together.
+This portfolio collects case studies that demonstrate my approach to technical writing.  
+Each piece was created either as part of a job application exercise or as an independent project to showcase how I handle developer-facing documentation.  
 
-In the **Case Studies** section you’ll see examples of how I:
+Across the **Case Studies**, you’ll see how I:
 
-- Shape technical material into guidance that readers can actually use  
-- Balance detail with clarity to support different audiences  
-- Build documentation as an integral part of the overall product  
+- Translate complex tools into clear, scenario-driven guidance  
+- Balance technical depth with accessibility for different audiences  
+- Treat documentation as part of the product experience, not an afterthought  
+
+The goal is to show both *how* I write and *why* I make the choices I do — clarity, usability, and context always at the center.
+
 
 ## About Me
 
