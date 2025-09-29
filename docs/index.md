@@ -53,4 +53,4 @@ Each case study demonstrates how I tackle a specific documentation challenge —
 
 I’m currently looking for technical writing roles in SaaS, Cybersecurity, AI and other tech fields.  
 
-Reach me at **your.email@example.com** or on [LinkedIn](https://www.linkedin.com/in/william-banks-7a736793/).  
+Reach me at **william.e.banks@icloud.com** or on [LinkedIn](https://www.linkedin.com/in/william-banks-7a736793/).  
