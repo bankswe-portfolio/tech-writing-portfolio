@@ -80,7 +80,7 @@ I also maintain a standalone HTML micro-series on governing long-lived AI-assist
 
     **Best entry point:** The Frozen Anchor
 
-    [Open the series →](./governance-series/index.html)
+    [Open the series →](./governance-ai-workflows/)
 
 </div>
 
@@ -94,7 +94,7 @@ Each sample is meant to show a different mode of documentation work:
 - **Articles and essays** that examine documentation as part of the development lifecycle
 - **Framework essays** that examine governance and long-lived AI-assisted workflows
 
-For a fuller view of the workflow behind this site, see [Workflow & About](./about/).
+For a fuller view of the workflow behind this site, see [Workflow & About](./about/about/).
 
 ## Contact
 
