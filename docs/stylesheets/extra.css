@@ -1,18 +1,18 @@
 /* ── Color tokens ── */
 :root {
-  --md-primary-fg-color: #1C1A18;
+  --md-primary-fg-color: #1B2A3B;
   --md-primary-bg-color: #ffffff;
-  --md-primary-fg-color--light: #6B6860;
-  --md-primary-fg-color--dark: #1C1A18;
+  --md-primary-fg-color--light: #4A6B8A;
+  --md-primary-fg-color--dark: #0F1E2E;
   --md-accent-fg-color: #C5A95A;
   --md-accent-fg-color--transparent: rgba(197, 169, 90, 0.1);
 }
 
 [data-md-color-scheme="slate"] {
-  --md-primary-fg-color: #F0EDE5;
+  --md-primary-fg-color: #E8EFF5;
   --md-accent-fg-color: #C5A95A;
-  --md-default-bg-color: #1C1A18;
-  --md-default-bg-color--light: #252320;
+  --md-default-bg-color: #0F1E2E;
+  --md-default-bg-color--light: #1B2A3B;
 }
 
 /* ── Typography ── */
