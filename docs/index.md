@@ -34,6 +34,12 @@ I create documentation that helps technical users adopt complex tools faster and
 
 </div>
 
+## Articles & Essays
+
+I also write short analytical pieces on where technical writing is heading as it becomes more tightly integrated with AI systems, docs-as-code workflows, and modern software delivery.
+
+[Browse Articles & Essays →](./articles/)
+
 ## What I Bring
 
 - **Developer documentation:** SDK guides, API/reference docs, conceptual explainers, onboarding flows
@@ -48,6 +54,7 @@ Each sample is meant to show a different mode of documentation work:
 - **How-to guidance** for technical users trying to complete a task
 - **Redline/editing work** that improves clarity, structure, and usability
 - **Conceptual explanation** that helps developers build accurate mental models
+- **Articles and essays** that examine documentation as part of the development lifecycle
 
 For a fuller view of the workflow behind this site, see [Workflow & About](./about/).
 

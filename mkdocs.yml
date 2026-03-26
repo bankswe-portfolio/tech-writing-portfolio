@@ -44,6 +44,13 @@ nav:
       - cnquery Practical Guide: case-studies/cnquery-practical-guide_mkdocs.md
       - NodeZero Tripwires Redline: case-studies/horizon3ai-tripwires-redline.md
       - Chains vs. Agents in LangChain: case-studies/longchain-chains-vs-agents.md
-  - Research Notes:
-      - Overview: research-notes/index.md
+  - Articles & Essays:
+      - Overview: articles/index.md
+      - OASBuilder and Automation-Ready API Docs: articles/oasbuilder.md
+      - DocAgent and Multi-Agent Documentation Pipelines: articles/docagent.md
+      - Documentation-to-Code Traceability with LLMs: articles/documentation-code-traceability.md
+      - DocFetch and Cross-Artifact Documentation Grounding: articles/docfetch.md
+      - RepoSummary and Feature-Level Traceability: articles/reposummary.md
+      - Regenerating Software Architecture Descriptions: articles/software-architecture-descriptions.md
+      - Outdated Documentation as a Repository Integrity Problem: articles/outdated-documentation-repository-integrity.md
   - Workflow & About: about/about.md
