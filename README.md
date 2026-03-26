@@ -1,25 +1,56 @@
-# Technical Writing Portfolio
+# William Banks — Technical Writing Portfolio
 
-👉 **[View the site](https://bankswe-portfolio.github.io/tech-writing-portfolio/)**
+**Live site:** https://bankswe-portfolio.github.io/tech-writing-portfolio/
 
-This project contains my portfolio of technical writing case studies. 
-Each study focuses on a real scenario and demonstrates how I approach documentation—structuring information, addressing reader needs, and presenting technical details with care.
+Technical writing samples across how-to documentation, conceptual explainers,
+editorial redlines, and analytical essays on documentation as a technical discipline.
+Built with MkDocs Material and deployed via GitHub Actions.
 
-- 🗂 **Case Studies:** practical examples with real product contexts  
-- 🧾 **Source:** Markdown under `/docs` using a docs-as-code workflow  
-- ✍️ **Goal:** treat documentation with the same rigor as code and product  
+---
+
+## Contents
+
+**Case Studies** — scenario-driven samples written against real tools and products,
+each demonstrating a distinct documentation mode: task-oriented guidance, structural
+redlining, and conceptual onboarding for developers.
+
+**Articles & Essays** — analytical pieces on where technical writing intersects with
+AI-assisted workflows, docs-as-code pipelines, and modern software delivery. Written
+as original work, not as portfolio filler.
+
+**Governance & AI Workflows** — a framework series on running disciplined LLM-assisted
+research and knowledge work, derived from direct application on a live program.
+
+---
+
+## Stack
+
+- **MkDocs Material** — theme and site generation
+- **GitHub Actions** — automatic deployment to GitHub Pages on push to `main`
+- **Markdown + PyMdown Extensions** — content authoring with admonitions, tabs,
+  code blocks, and Mermaid diagrams
+
+---
 
 ## Local development
-Preview the site locally:
+```bash
+pip install mkdocs mkdocs-material pymdown-extensions
+mkdocs serve
+```
 
-    pip install mkdocs mkdocs-material pymdown-extensions
-    mkdocs serve
+The site is available at `http://localhost:8000` while the server is running.
+Changes to `docs/` reload automatically.
 
 ## Deployment
-Choose one method:
 
-- One-off publish:  
+Pushing to `main` triggers the GitHub Actions workflow and redeploys automatically.
+For a manual one-off deploy:
+```bash
+mkdocs gh-deploy --force
+```
 
-      mkdocs gh-deploy --force
+---
 
-- Continuous deploy: push to `main` with GitHub Actions enabled
+## Contact
+
+william.e.banks@icloud.com · [LinkedIn](https://www.linkedin.com/in/william-banks-7a736793/)
