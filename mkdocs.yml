@@ -5,11 +5,19 @@ repo_url: https://github.com/bankswe-portfolio/tech-writing-portfolio
 edit_uri: blob/main/docs/
 theme:
   name: material
+  palette:
+    - scheme: default
+      primary: blue grey
+      accent: indigo
+  font:
+    text: Inter
+    code: JetBrains Mono
   features:
     - navigation.instant
     - navigation.tracking
     - content.code.copy
     - content.action.edit
+    - content.tabs.link
     - search.suggest
     - search.highlight
 markdown_extensions:
@@ -25,11 +33,14 @@ markdown_extensions:
   - pymdownx.highlight
   - pymdownx.tabbed
   - pymdownx.snippets
+
+extra_css:
+  - stylesheets/extra.css
+
 nav:
   - Home: index.md
   - Case Studies:
-    - Mondoo - cnquery Practical Guide: case-studies/cnquery-practical-guide_mkdocs.md
-    - Horizon3.ai - NodeZero Tripwires Redline: case-studies/horizon3ai-tripwires-redline.md
-    - LangChain - Agents vs Chains Explainer: case-studies/longchain-chains-vs-agents.md
-   
-  - About the Portfolio: about/about.md
+      - cnquery Practical Guide: case-studies/cnquery-practical-guide_mkdocs.md
+      - NodeZero Tripwires Redline: case-studies/horizon3ai-tripwires-redline.md
+      - Chains vs. Agents in LangChain: case-studies/longchain-chains-vs-agents.md
+  - Workflow & About: about/about.md

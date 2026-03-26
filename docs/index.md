@@ -1,56 +1,56 @@
+# Will Banks
 
-# Technical Writing Portfolio
+Technical writer and research engineer focused on developer documentation, complex systems, and docs-as-code workflows.
 
-Welcome — thanks for visiting.
+I create documentation that helps technical users adopt complex tools faster and helps engineering teams scale clarity alongside product complexity.
 
-This portfolio collects case studies that demonstrate my approach to technical writing.  
-Each piece was created either as part of a job application exercise or as an independent project to showcase how I handle developer-facing documentation.  
+[View Resume (PDF) →](https://docs.google.com/document/d/1yv8pqGzOZew67R3HoX8QbaK1VehR5nlt/export?format=pdf)  
+[LinkedIn →](https://www.linkedin.com/in/william-banks-7a736793/)
 
-Across the **Case Studies**, you’ll see how I:
+## Selected Case Studies
 
-- Translate complex tools into clear, scenario-driven guidance  
-- Balance technical depth with accessibility for different audiences  
-- Treat documentation as part of the product experience, not an afterthought  
+<div class="grid cards" markdown>
 
-The goal is to show both *how* I write and *why* I make the choices I do — clarity, usability, and context always at the center.
+-   ## cnquery Practical Guide
+    Scenario-driven CLI documentation for a security tool, written to improve task success for technical users.
 
+    **Focus:** how-to docs, developer UX, task flow
 
-## About Me
+    [Read case study →](./case-studies/cnquery-practical-guide_mkdocs/)
 
-I’m Will Banks, a technical writer and former research engineer with 10+ years of experience translating complex systems into clear, actionable content.  
-My background spans developer SDKs, APIs, avionics standards, and biomedical platforms — all unified by one theme: making technical knowledge approachable and useful.
+-   ## NodeZero Tripwires Redline
+    A structural and editorial redline showing how I tighten flow, reduce ambiguity, and improve usability in existing product docs.
 
-I specialize in **docs-as-code workflows** (AsciiDoc, Markdown, MkDocs, CI/CD pipelines), **developer-focused documentation** (SDK guides, API references, conceptual explainers), and **technical storytelling** that connects product features to real-world outcomes.
+    **Focus:** redlining, information architecture, usability
 
-Before pivoting full-time into documentation, I worked on projects ranging from U.S. Navy defense systems to FACE-conformant avionics platforms and Unity-based neuroscience tools.  
-Along the way, I’ve authored comprehensive developer guides, built automated doc pipelines, presented at technical summits, and contributed to peer-reviewed publications.
+    [Read case study →](./case-studies/horizon3ai-tripwires-redline/)
 
-What drives me is clarity: giving engineers, developers, and product teams the confidence to adopt and extend complex technology.
+-   ## Chains vs. Agents in LangChain
+    A conceptual explainer for developers choosing between fixed workflows and agentic architectures.
 
-Connect with me on [LinkedIn](https://www.linkedin.com/in/william-banks-7a736793/) for my full background, or check out [my Resume](https://docs.google.com/document/d/1yv8pqGzOZew67R3HoX8QbaK1VehR5nlt/export?format=pdf)
+    **Focus:** conceptual docs, diagrams, onboarding clarity
 
-## Skills & Tools
+    [Read case study →](./case-studies/longchain-chains-vs-agents/)
 
-- **Tech Writing:** CLI & repo workflows, docs-as-code (AsciiDoc, Markdown, PlantUML, Graphviz, OpenAPI, Postman, static site generators like MkDocs and docToolchain), AI-driven workflows
-- **Programming & Scripting:** Python, C++, Bash, JSON, YAML, Workflow Automation; IDEs including VS Code and IntelliJ IDEA 
-- **Agile Tools:** Jira, Confluence, Git, Teams, Zoom  
-- **Operating Systems:** Windows & Linux (WSL)  
+</div>
 
-## Highlights
+## What I Bring
 
-- Authored the **FACE Technical Starter Kit Developer’s Guide**, distributed across the avionics industry.  
-- Built automated pipelines and docs-as-code workflows from scratch.  
-- Presented product development and documentation at the **MOSA Summit** and Vanderbilt symposia.  
-- Contributed to multiple **peer-reviewed publications** across physics and biomedical research.  
+- **Developer documentation:** SDK guides, API/reference docs, conceptual explainers, onboarding flows
+- **Docs-as-code practice:** Markdown, AsciiDoc, MkDocs, docToolchain, CI-driven publishing
+- **Complex domain fluency:** defense-adjacent systems, avionics standards, biomedical research platforms
+- **Research-engineering depth:** experience working close to engineers, SMEs, and technical stakeholders on difficult systems
 
-## Case Studies: Documentation in Action
+## How to Read This Portfolio
 
-Each case study demonstrates how I tackle a specific documentation challenge — whether creating new material, editing existing content, or balancing conceptual depth with practical guidance.
+Each sample is meant to show a different mode of documentation work:
 
-[Explore the Case Studies →](./case-studies/)
+- **How-to guidance** for technical users trying to complete a task
+- **Redline/editing work** that improves clarity, structure, and usability
+- **Conceptual explanation** that helps developers build accurate mental models
 
-## Let’s Connect
+For a fuller view of the workflow behind this site, see [Workflow & About](./about/).
 
-I’m currently looking for technical writing roles in SaaS, Cybersecurity, AI and other tech fields.  
+## Contact
 
-Reach me at **william.e.banks@icloud.com** or on [LinkedIn](https://www.linkedin.com/in/william-banks-7a736793/).  
+Reach me at **william.e.banks@icloud.com** or on [LinkedIn](https://www.linkedin.com/in/william-banks-7a736793/).
