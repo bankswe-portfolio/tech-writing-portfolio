@@ -580,6 +580,39 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#why-this-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What changes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implications-for-technical-writing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implications for technical writing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -800,6 +833,39 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#why-this-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What changes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implications-for-technical-writing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implications for technical writing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -836,33 +902,32 @@
 
 
 <h1 id="docagent-and-multi-agent-documentation-pipelines">DocAgent and Multi-Agent Documentation Pipelines<a class="headerlink" href="#docagent-and-multi-agent-documentation-pipelines" title="Permanent link">&para;</a></h1>
-<p>Meta AI’s DocAgent paper offers a useful look at what AI-assisted documentation pipelines might become in real software environments.</p>
-<p>The paper frames a familiar problem: even well-maintained repositories often have sparse or outdated docstrings, and the usual single-model approach—prompting an LLM to "write a docstring for this function"—tends to produce incomplete, shallow, or hallucinated output.</p>
-<p>DocAgent takes a different approach. Instead of one omniscient model, it orchestrates a team of agents—Reader, Searcher, Writer, and Verifier—each with a distinct role and coordinated by an Orchestrator.</p>
+<blockquote>
+<p>Multi-agent documentation systems are starting to look less like novelty demos and more like early versions of documentation CI.</p>
+</blockquote>
+<p><strong>Type:</strong> Article<br />
+<strong>Audience:</strong> Technical writers, docs-as-code teams, engineering orgs exploring AI-assisted docs<br />
+<strong>Theme:</strong> AI-assisted documentation, verification, agentic workflows</p>
+<h2 id="why-this-matters">Why this matters<a class="headerlink" href="#why-this-matters" title="Permanent link">&para;</a></h2>
+<p>Sparse or outdated docstrings are a common problem, and the usual single-model approach—prompting an LLM to write a docstring for a function—often produces shallow or unreliable output.</p>
+<p>Meta AI’s <strong>DocAgent</strong> paper takes a different approach. Instead of relying on one model to do everything, it orchestrates a team of agents—Reader, Searcher, Writer, and Verifier—each with a distinct role coordinated by an Orchestrator.</p>
+<h2 id="what-changes">What changes<a class="headerlink" href="#what-changes" title="Permanent link">&para;</a></h2>
+<p>The Reader inspects a code component to determine what extra context is needed. The Searcher retrieves that information from within the repository and external references. The Writer drafts the docstring using the curated context. The Verifier evaluates the result against explicit criteria and loops feedback back into the cycle.</p>
+<p>The system also processes code in a topological order that follows real dependencies. In practice, that means documenting functions after their dependencies have already been described, so each new docstring inherits relevant context rather than rediscovering it from scratch.</p>
+<p>DocAgent evaluates documentation across three dimensions:</p>
 <ul>
-<li>The <strong>Reader</strong> inspects a code component to determine what extra context is needed.</li>
-<li>The <strong>Searcher</strong> retrieves that information from within the repository and external references.</li>
-<li>The <strong>Writer</strong> generates the docstring using that curated context.</li>
-<li>The <strong>Verifier</strong> evaluates it against concrete criteria and loops feedback back into the cycle.</li>
+<li><strong>Completeness</strong> — whether it includes the essential elements expected for that component</li>
+<li><strong>Helpfulness</strong> — whether it explains why and how the code works, not just what it does</li>
+<li><strong>Truthfulness</strong> — whether it stays grounded in the code rather than hallucinating behavior</li>
 </ul>
-<p>All of this happens in a topological order that follows real code dependencies. In practice, that means DocAgent documents functions after their dependencies have been described, so each new docstring inherits relevant context rather than trying to rediscover it. That small design choice mirrors how human writers work: we document building blocks before the higher-level constructs that depend on them.</p>
-<p>DocAgent scores documentation across three dimensions:</p>
-<ul>
-<li><strong>Completeness</strong> — does it include the essential elements expected for this kind of code?</li>
-<li><strong>Helpfulness</strong> — does it explain why and how the code works, not just what it does?</li>
-<li><strong>Truthfulness</strong> — does it stay grounded in the actual code, avoiding hallucinated parameters or behavior?</li>
-</ul>
-<p>What is most interesting here is documentation as a systemic process. The multi-agent setup feels like a prototype of docs-as-agents, where the documentation lifecycle itself becomes a programmable workflow—an ecosystem of retrieval, reasoning, and verification that could run continuously alongside CI/CD.</p>
-<p>For teams living in a docs-as-code world, this feels like an inflection point. We already lint, build, and deploy docs automatically; now we are starting to see frameworks that can generate and validate them with comparable rigor.</p>
-<p>That raises practical questions:</p>
-<ul>
-<li>Could agentic systems become part of a documentation CI, flagging missing context or outdated examples automatically?</li>
-<li>How might these methods help internal SDK or API teams where context is scattered across hundreds of modules?</li>
-<li>What would it mean for human writers if AI tools began to own the first-draft stage entirely?</li>
-</ul>
+<p>That framing is the real contribution. The paper treats documentation as a system process rather than a one-shot generation problem.</p>
+<h2 id="implications-for-technical-writing">Implications for technical writing<a class="headerlink" href="#implications-for-technical-writing" title="Permanent link">&para;</a></h2>
+<p>The multi-agent setup feels like a prototype of docs-as-agents, where the documentation lifecycle itself becomes a programmable workflow of retrieval, reasoning, and verification that can run alongside CI/CD.</p>
+<p>For teams already living in a docs-as-code world, this is a meaningful shift. We already lint, build, and deploy docs automatically. The next layer is systems that can generate and validate them with comparable rigor.</p>
+<p>The practical question is not whether writers disappear from the loop. It is where human effort moves when a system can own more of retrieval, first drafting, and validation.</p>
 <h2 id="source">Source<a class="headerlink" href="#source" title="Permanent link">&para;</a></h2>
 <ul>
-<li><em>DocAgent: A Multi-Agent System for Automated Code Documentation Generation</em> (<a href="http://arxiv.org/abs/2504.08725">arXiv</a>)</li>
+<li><em>DocAgent: A Multi-Agent System for Automated Code Documentation Generation</em></li>
 </ul>
 
 

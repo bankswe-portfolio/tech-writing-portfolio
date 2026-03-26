@@ -608,6 +608,39 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#why-this-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What changes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implications-for-technical-writing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implications for technical writing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -800,6 +833,39 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#why-this-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What changes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implications-for-technical-writing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implications for technical writing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -836,30 +902,24 @@
 
 
 <h1 id="documentation-to-code-traceability-with-llms">Documentation-to-Code Traceability with LLMs<a class="headerlink" href="#documentation-to-code-traceability-with-llms" title="Permanent link">&para;</a></h1>
-<p>Traceability has been a persistent challenge in software engineering.</p>
-<p>Docs and code evolve at different speeds. When links between them break, impact analysis, refactoring, and even onboarding become harder than they need to be.</p>
-<p>A recent 2025 study, <em>Evaluating the Use of LLMs for Documentation to Code Traceability</em>, provides one of the most systematic examinations I have seen of whether large language models can help with doc-to-code traceability.</p>
-<p>The authors define the problem clearly:</p>
 <blockquote>
-<p>"Documentation-to-code traceability focuses on linking natural language documentation to the corresponding code implementations."</p>
+<p>High-precision trace discovery can make documentation-to-code relationships more measurable and reviewable.</p>
 </blockquote>
-<p>To evaluate this, they built two new datasets from modern open-source projects created after model training cutoffs. They tested Claude 3.5 Sonnet, GPT-4o, and o3-mini against traditional baselines including TF-IDF, BM25, and CodeBERT.</p>
-<p>On raw link identification, the results are concrete:</p>
-<blockquote>
-<p>"We find that the best-performing LLM achieves F1-scores of 79.4% and 80.4% … substantially outperforming our baselines (whose best F1-scores were 54.2% and 69.3%, respectively)."</p>
-</blockquote>
-<p>Precision across LLMs exceeded 87 percent. Recall varied more substantially. High precision suggests LLM-proposed links are often valid. Lower recall means links can still be missed, particularly at higher abstraction levels.</p>
-<p>The paper also evaluates whether models can explain relationships and reconstruct multi-step trace chains. On explanation quality, the authors report:</p>
-<blockquote>
-<p>"We find that while fully correct relationship explanations range from 42.9% to 71.1%, partial accuracy exceeds 97%, indicating that fundamental connections are rarely missed."</p>
-</blockquote>
-<p>Even when explanations are incomplete, the core relationship is usually identified correctly.</p>
-<p>For technical writers, this is directly relevant.</p>
-<p>First, traceability becomes something measurable within a documentation workflow. If a segment can be evaluated against candidate artifacts in a controlled way, trace validation becomes repeatable rather than manual.</p>
-<p>Second, the error analysis is instructive. False positives often stem from naming assumptions or architectural pattern bias. Those failure modes mirror risks writers already manage when reviewing generated diagrams or API summaries.</p>
-<p>Third, task framing matters. A one-to-many matching strategy consistently outperformed a many-to-many approach. Workflow design influences documentation accuracy as much as model choice.</p>
-<p>Practically, LLMs can act as high-precision trace discovery assistants when paired with structured prompts and human review. They reduce search space and surface candidate relationships. Writers still interpret intent and meaning.</p>
-<p>If documentation is expected to live inside CI pipelines and evolve with code, traceability cannot remain informal. This paper provides data for how that shift might look in practice.</p>
+<p><strong>Type:</strong> Article<br />
+<strong>Audience:</strong> Technical writers, documentation engineers, teams working on code-linked docs<br />
+<strong>Theme:</strong> traceability, evaluation, documentation correctness</p>
+<h2 id="why-this-matters">Why this matters<a class="headerlink" href="#why-this-matters" title="Permanent link">&para;</a></h2>
+<p>Docs and code evolve at different speeds. When links between them break, impact analysis, refactoring, and onboarding all become harder than they need to be.</p>
+<p>A recent study examines whether large language models can help recover those links.</p>
+<h2 id="what-changes">What changes<a class="headerlink" href="#what-changes" title="Permanent link">&para;</a></h2>
+<p>The authors define the problem as linking natural language documentation to the corresponding code implementations.</p>
+<p>To evaluate that task, they built new datasets from modern open-source projects created after model training cutoffs. They tested Claude 3.5 Sonnet, GPT-4o, and o3-mini against baselines including TF-IDF, BM25, and CodeBERT.</p>
+<p>On raw link identification, the strongest LLMs materially outperformed the baselines. The best-performing model achieved roughly 79 to 80 percent F1, versus substantially lower scores for the non-LLM baselines. Precision across LLMs exceeded 87 percent, while recall varied more.</p>
+<p>That matters because high precision suggests LLM-proposed links are often valid even when they are incomplete. The paper also looks at whether models can explain relationships and reconstruct trace chains. Even when explanations were not fully correct, the core relationship was often identified accurately.</p>
+<h2 id="implications-for-technical-writing">Implications for technical writing<a class="headerlink" href="#implications-for-technical-writing" title="Permanent link">&para;</a></h2>
+<p>For technical writers, traceability becomes something measurable within a documentation workflow. If a documentation segment can be evaluated against candidate code artifacts in a controlled way, trace validation becomes more repeatable and less purely manual.</p>
+<p>The error analysis is instructive too. False positives often came from naming assumptions or architectural-pattern bias. Those are close cousins of the same risks writers already manage when reviewing generated diagrams, API summaries, or architecture descriptions.</p>
+<p>The practical implication is not that writers disappear from trace work. It is that LLMs can act as high-precision trace discovery assistants when paired with structured prompts and human review. They reduce search space, surface candidate relationships, and make code-linked documentation easier to validate systematically.</p>
 <h2 id="source">Source<a class="headerlink" href="#source" title="Permanent link">&para;</a></h2>
 <ul>
 <li><em>Evaluating the Use of LLMs for Documentation to Code Traceability</em></li>

@@ -720,10 +720,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sources" class="md-nav__link">
+  <a href="#why-this-matters" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sources
+        Why this matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What changes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implications-for-technical-writing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implications for technical writing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source
       
     </span>
   </a>
@@ -800,10 +833,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sources" class="md-nav__link">
+  <a href="#why-this-matters" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sources
+        Why this matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What changes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implications-for-technical-writing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implications for technical writing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source
       
     </span>
   </a>
@@ -836,24 +902,27 @@
 
 
 <h1 id="outdated-documentation-as-a-repository-integrity-problem">Outdated Documentation as a Repository Integrity Problem<a class="headerlink" href="#outdated-documentation-as-a-repository-integrity-problem" title="Permanent link">&para;</a></h1>
-<p>Recent documentation research shows a shift in how certain problems are framed. Issues that were once treated primarily as writing gaps are increasingly examined as system-level failures.</p>
-<p>Outdated documentation is a good example. It is often explained as a result of writers falling behind changes in the codebase. Recent software engineering research approaches it instead as a repository integrity issue that can be detected automatically.</p>
-<p>Wen Siang Tan, Markus Wagner, and Christoph Treude study this problem by looking at how documentation references code elements that no longer exist. In their analysis, they report:</p>
 <blockquote>
-<p>"We analysed over 3,000 GitHub projects and found that most projects contain … at least one outdated code element reference at some point in their history."</p>
+<p>Some documentation failures are better understood as repository-integrity defects than as ordinary editorial drift.</p>
 </blockquote>
-<p>The work focuses on a specific failure mode: documentation that still mentions variables, functions, or classes after those elements have been deleted or renamed in the source code. Instead of manual review, the approach compares documentation against repository revisions to identify references that no longer resolve.</p>
-<p>The follow-on paper moves this idea into an operational setting. It introduces a pull request workflow:</p>
-<blockquote>
-<p>"In this paper, we present a GitHub Actions tool that builds on our previous work's approach that GitHub developers can configure to automatically scan for outdated code element references … whenever a pull request is submitted."</p>
-</blockquote>
-<p>For technical writers working on SDKs, APIs, CLIs, and system documentation, this work highlights two kinds of quality. Editorial quality includes clarity, structure, narrative flow, and examples that help users understand a system. Referential correctness concerns whether identifiers, symbols, and code-linked claims still match the current state of the codebase.</p>
-<p>The second category is where teams often lose time, and it is also where CI fits naturally. One practical takeaway from this research is treating broken references as a signal during continuous integration. Not every documentation issue belongs in a pipeline, but stale API names, removed flags, and dead symbols are typically unambiguous defects. The authors explicitly position automation as a way to make this practical at scale:</p>
-<blockquote>
-<p>"Using a tool such as GitHub Action … to automate the workflow simplifies the process considerably."</p>
-</blockquote>
-<p>This work is useful for technical writers because it treats documentation as part of the product itself, not something maintained alongside it. When docs move through the same workflows and checks as the software, their quality reflects the health of the system that produces them. In practice, teams with solid delivery pipelines tend to end up with more reliable documentation, not because they write more carefully, but because the process supports correctness by default.</p>
-<h2 id="sources">Sources<a class="headerlink" href="#sources" title="Permanent link">&para;</a></h2>
+<p><strong>Type:</strong> Article<br />
+<strong>Audience:</strong> Technical writers, docs-as-code teams, engineering orgs with CI-driven documentation<br />
+<strong>Theme:</strong> docs-as-code, CI, referential correctness</p>
+<h2 id="why-this-matters">Why this matters<a class="headerlink" href="#why-this-matters" title="Permanent link">&para;</a></h2>
+<p>Outdated documentation is often explained as writers falling behind changes in the codebase. Recent software engineering research reframes part of the problem differently: as a repository integrity issue that can be detected automatically.</p>
+<p>That is a meaningful shift because it separates editorial quality from referential correctness.</p>
+<h2 id="what-changes">What changes<a class="headerlink" href="#what-changes" title="Permanent link">&para;</a></h2>
+<p>The underlying work looks at documentation that still references variables, functions, or classes after those code elements have been renamed or removed. Instead of relying on manual review, the approach compares documentation against repository revisions to identify references that no longer resolve.</p>
+<p>A follow-on workflow moves this idea into pull requests by introducing a GitHub Actions tool that can scan for outdated code-element references automatically whenever a pull request is submitted.</p>
+<h2 id="implications-for-technical-writing">Implications for technical writing<a class="headerlink" href="#implications-for-technical-writing" title="Permanent link">&para;</a></h2>
+<p>For teams working on SDKs, APIs, CLIs, and system documentation, this research highlights two distinct kinds of quality:</p>
+<ul>
+<li><strong>Editorial quality:</strong> clarity, structure, tone, examples, and reader guidance</li>
+<li><strong>Referential correctness:</strong> whether identifiers, symbols, and code-linked claims still match the current codebase</li>
+</ul>
+<p>The second category is where CI fits naturally. Not every documentation issue belongs in a pipeline, but stale API names, removed flags, and dead symbols are typically unambiguous defects. Treating those as part of repository health changes documentation from something maintained beside the software into something checked as part of the software system itself.</p>
+<p>That does not reduce the role of writers. It gives them a cleaner floor to stand on. Human attention can stay focused on meaning, audience, and usability while the system helps catch mechanically detectable referential drift.</p>
+<h2 id="source">Source<a class="headerlink" href="#source" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Wen Siang Tan, Markus Wagner, and Christoph Treude</li>
 </ul>
