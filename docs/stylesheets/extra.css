@@ -1,3 +1,21 @@
+/* ── Color tokens ── */
+:root {
+  --md-primary-fg-color: #1C1A18;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-fg-color--light: #6B6860;
+  --md-primary-fg-color--dark: #1C1A18;
+  --md-accent-fg-color: #C5A95A;
+  --md-accent-fg-color--transparent: rgba(197, 169, 90, 0.1);
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #F0EDE5;
+  --md-accent-fg-color: #C5A95A;
+  --md-default-bg-color: #1C1A18;
+  --md-default-bg-color--light: #252320;
+}
+
+/* ── Typography ── */
 .md-typeset h1 {
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -22,6 +40,7 @@
   margin: 1rem 0 1.25rem;
 }
 
+/* ── Cards ── */
 .md-typeset .grid.cards > ul > li {
   border-radius: 14px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -33,6 +52,7 @@
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
 }
 
+/* ── Layout ── */
 .md-typeset hr {
   margin: 2rem 0;
 }
@@ -45,6 +65,16 @@
   margin-top: 1rem;
 }
 
+/* ── Code ── */
 .md-typeset code {
   font-size: 0.85em;
+}
+
+/* ── Nav tabs ── */
+.md-tabs {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.md-tabs__link--active {
+  border-bottom: 2px solid var(--md-accent-fg-color);
 }
