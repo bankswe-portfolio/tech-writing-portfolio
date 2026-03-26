@@ -53,4 +53,5 @@ nav:
       - RepoSummary and Feature-Level Traceability: articles/reposummary.md
       - Regenerating Software Architecture Descriptions: articles/software-architecture-descriptions.md
       - Outdated Documentation as a Repository Integrity Problem: articles/outdated-documentation-repository-integrity.md
+  - Governance & AI Workflows: governance-series.md
   - Workflow & About: about/about.md

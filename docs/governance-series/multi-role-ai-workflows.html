@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Designing Multi-Role AI Collaboration Workflows</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:           #F8F5EF;
+  --bg2:          #F0EDE5;
+  --bg3:          #EAE6DE;
+  --text:         #1C1A18;
+  --muted:        #6B6860;
+  --accent:       #B5640A;
+  --accent-light: #FAF0DC;
+  --accent-mid:   #C5A95A;
+  --border:       #DDD9D0;
+}
+
+body {
+  font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.78;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+article {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 64px 40px 96px;
+}
+
+header { margin-bottom: 2.5rem; }
+
+.series-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.85rem;
+  display: block;
+}
+
+h1 {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.18;
+  color: var(--text);
+  margin-bottom: 0.7rem;
+}
+
+.subtitle {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 1.05rem;
+  color: var(--muted);
+  font-weight: 300;
+  letter-spacing: 0.025em;
+  margin-bottom: 1.5rem;
+}
+
+.accent-rule {
+  width: 44px;
+  height: 3px;
+  background: var(--accent-mid);
+  border-radius: 2px;
+}
+
+.lead {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.18rem;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 1.75rem;
+}
+
+h2 {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 3.25rem;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+p { margin-bottom: 1.2rem; }
+p:last-child { margin-bottom: 0; }
+strong { font-weight: 600; }
+em { font-style: italic; }
+
+/* ── Pull quote ── */
+.pullquote {
+  border-left: 4px solid var(--accent-mid);
+  background: var(--accent-light);
+  padding: 1.25rem 1.75rem;
+  margin: 2rem 0;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.08rem;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.65;
+  border-radius: 0 8px 8px 0;
+}
+
+/* ── Diagram containers ── */
+.diagram-wrap {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem 1.5rem 1rem;
+  margin: 2.25rem 0;
+  overflow: hidden;
+}
+
+.diagram-caption {
+  font-size: 0.83rem;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 0.9rem;
+  font-style: italic;
+  line-height: 1.55;
+}
+
+/* ── Role cards ── */
+.role-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 2.25rem 0;
+}
+
+.role-card {
+  border-radius: 10px;
+  padding: 1.2rem 1.3rem 1.15rem;
+  border: 1px solid;
+}
+
+.rc-ankyra { background: #E3F3EE; border-color: #1A8A6A; }
+.rc-session { background: #EEEDF8; border-color: #5B52C8; }
+.rc-impl   { background: #FBF5E6; border-color: #C5A95A; }
+.rc-explore { background: #F0EDE5; border-color: #9A9690; }
+
+.rc-tag {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.rc-ankyra  .rc-tag { color: #0D5C48; }
+.rc-session .rc-tag { color: #3A32A0; }
+.rc-impl    .rc-tag { color: #7A5010; }
+.rc-explore .rc-tag { color: #6B6860; }
+
+.rc-name {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.45rem;
+  display: block;
+  line-height: 1.3;
+}
+
+.rc-desc {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.52;
+  margin-bottom: 0.7rem;
+}
+
+.rc-cannot {
+  font-size: 0.8rem;
+  color: var(--muted);
+  border-top: 1px solid;
+  padding-top: 0.6rem;
+  line-height: 1.45;
+}
+
+.rc-ankyra  .rc-cannot { border-color: #A8D8C8; }
+.rc-session .rc-cannot { border-color: #C0BCEC; }
+.rc-impl    .rc-cannot { border-color: #E0CFA0; }
+.rc-explore .rc-cannot { border-color: #C8C4BC; }
+
+.rc-cannot-label {
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: inline;
+}
+
+.rc-ankyra  .rc-cannot-label { color: #B84030; }
+.rc-session .rc-cannot-label { color: #B84030; }
+.rc-impl    .rc-cannot-label { color: #B84030; }
+.rc-explore .rc-cannot-label { color: #B84030; }
+
+/* ── Output pathway table ── */
+.pathway-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.88rem;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.pathway-table th {
+  background: var(--bg3);
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  padding: 0.65rem 1.1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.pathway-table td {
+  padding: 0.8rem 1.1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.pathway-table tr:last-child td { border-bottom: none; }
+
+.flag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: 'Source Sans 3', monospace;
+}
+
+.flag-commit  { background: #DFF5EE; color: #0D5C48; border: 1px solid #A8D8C8; }
+.flag-note    { background: #FBF5E6; color: #7A5010; border: 1px solid #E0CFA0; }
+.flag-handoff { background: #EEEDF8; color: #3A32A0; border: 1px solid #C0BCEC; }
+
+.pathway-table td:first-child { font-weight: 600; color: var(--text); width: 22%; }
+.pathway-table td:nth-child(2) { width: 20%; }
+.pathway-table td:nth-child(3) { color: var(--muted); }
+
+/* ── Failure modes ── */
+.fail-list {
+  list-style: none;
+  margin: 1.75rem 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.fail-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: var(--bg2);
+  border-radius: 8px;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--border);
+}
+
+.fail-marker {
+  font-size: 0.85rem;
+  color: #B84030;
+  flex-shrink: 0;
+  margin-top: 3px;
+  font-weight: 600;
+}
+
+.fail-content strong {
+  display: block;
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.93rem;
+  margin-bottom: 0.18rem;
+}
+
+.fail-content p {
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+.fail-resolve {
+  font-size: 0.82brem;
+  color: #0D5C48;
+  font-weight: 600;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+/* ── Scope block ── */
+.scope-block {
+  margin: 2rem 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.scope-header {
+  background: var(--bg3);
+  padding: 0.75rem 1.4rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+
+.scope-body {
+  padding: 1.1rem 1.4rem;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.scope-body p { font-family: 'Lora', Georgia, serif; margin-bottom: 0.6rem; }
+.scope-body p:last-child { margin-bottom: 0; }
+
+.scope-fields {
+  font-size: 0.83rem;
+  color: var(--muted);
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.2rem 0.8rem;
+}
+
+.scope-key { font-weight: 600; color: var(--text); }
+
+/* ── Crosslink ── */
+.crosslink {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin: 2rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.cl-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+  opacity: 0.7;
+}
+
+.cl-text a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.cl-text a:hover { text-decoration: underline; }
+
+/* ── Footer ── */
+footer {
+  margin-top: 3.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.86rem;
+  color: var(--muted);
+  line-height: 1.58;
+}
+
+/* ── Responsive ── */
+@media (max-width: 720px) {
+  article { padding: 40px 22px 64px; }
+   h1 { font-size: 2.1rem; }
+  .role-grid { grid-template-columns: 1fr; }
+  .pathway-table th, .pathway-table td { font-size: 0.8rem; padding: 0.65rem 0.7rem; }
+}
+
+.utility-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 1.6rem;
+}
+.utility-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.utility-nav a:hover { color: var(--accent); border-bottom-color: var(--accent-mid); }
+.utility-sep { color: var(--border); }
+.series-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 2rem 0 0;
+}
+@media (max-width: 700px) { .series-grid { grid-template-columns: 1fr; } }
+.series-next {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+}
+.series-next-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.45rem;
+}
+.series-next a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+}
+.series-next a:hover { color: var(--accent); }
+footer a, .crosslink a { color: var(--accent); }
+</style>
+</head>
+<body>
+<article>
+
+<nmv class="utility-nav">
+  <a href="../">← Portfolio</a>
+  <span class="utility-sep">·</span>
+  <a href="index.html">Series Index</a>
+</nav>
+
+<header>
+  <span class="series-tag">Governing LLM-Assisted Work — Part III of III</span>
+  <h1>Designing Multi-Role AI Collaboration Workflows</h1>
+  <p class="subtitle">A Four-Layer Architecture for Solo Research Programs</p>
+  <div class="accent-rule"></div>
+</header>
+
+<p class="lead">Most AI collaboration advice treats every conversation as a fresh start. This one treats the AI as a staffed organization.</p>
+
+ <p>The default posture when working with an LLM on a complex project is a single ongoing chat — one context, one role, one accumulating conversation that handles research, implementation, review, and ideation interchangeably. This works well for simple tasks. For long-lived projects, it quietly produces a specific class of failure: the same context that generated a finding also evaluates it; the same instance that wrote the code also decides whether to commit it; the same conversation that explored a half-formed idea also treats it as resolved.</p>
+
+ <p>This is the closed-loop problem applied to workflow design. When one instance of an AI does all the work — generating outputs, reviewing them, and authorizing them — there is no external pressure on any of those judgments. The validator is not independent of the work it is validating. Elegant outputs look valid to the same context that produced them, because the context that produced them has already decided they are adequate.</p>
+
+<p>The architecture described here addresses this problem by decomposing AI-assisted work into four distinct roles, each with its own mandate, file load order, conduct rules, output responsibilities, and a defined list of things it explicitly cannot do. The roles do not share a context. Each one begins fresh, loaded with only what is appropriate for its function. The human operator is always in the handoff path. And a single meta layer — separate from all research and implementation work — is the only role authorized to commit anything to the project files.</p>
+
+<h2>The Four Roles</h2>
+
+<p>The system separates AI collaboration into four layers. What matters is not just what each role does, but what each role is not allowed to do.</p>
+
+  <div class="role-grid">
+    <div class="role-card rc-session">
+      <span class="rc-tag">Research layer</span>
+      <span class="rc-name">S1NN (session-level research chats)</span>
+      <p class="rc-desc">Runs tasks such as literature read, targeted analysis, conceptual beaming, and session-bound research investigation. Outputs are not directly committable.</p>
+      <div class="rc-cannot"><span class="rc-cannot-label">Cannot: </span>Write implementation code. Authorize its own findings. Commit to project files.</div>
+    </div
+    <div class="role-card rc-impl">
+      <span class="rc-tag">Build layer</span>
+      <span class="rc-name">ANN (implementation chat)</span>
+      <p class="rc-desc">Translates a defined spec into code or implementation-specific deliverables. Works from explicit inputs and THREAD entries, not from open-ended research reasoning.</p>
+      <div class="rc-cannot"><span class="rc-cannot-label">Cannot: </span>Conduct primary research. Reframe project scope. Commit without authorization.</div>
+    </div>
+    <div class="role-card rc-explore">
+      <span class="rc-tag">Ideation layer</span>
+      <span class="rc-name">INN (exploration chat)</span>
+      <p class="rc-desc">Explores open possibilities, alternative models, or speculative directions without any implicit claim of authority. Outputs are exploratory by default.</p>
+      <div class="rc-cannot"><span class="rc-cannot-label">Cannot: </span>Produce commit-ready outputs. Update project files. Substitute speculation for audited evidence.</div>
+    </div>
+    <div class="role-card rc-ankyra">
+      <span class="rc-tag">Authorization layer</span>
+      <span class="rc-name">ENN (Ankyra gate)</span>
+      <p class="rc-desc">The only role authorized to generate commit blocks and determine whether candidate outputs are ready to enter the project record. Loads fresh for each review.</p>
+      <div class="rc-cannot"><span class="rc-cannot-label">Cannot: </span>Conduct primary research. Write implementation code. Commit without explicit human authorization.</div>
+    </div>
+  </div>
+
+<h2>Why the Authorization Gate Matters</h2>
+
+<p>The most important design decision in the architecture is the placement of Ankyra as the single commit-authorized role. This is not an administrative convenience. It is the mechanism that breaks closed-loop validation.</p>
+
+<div class="pullquote">
+  The authorization gate's value is not that it catches more errors. It is that it provides a structurally independent evaluation of every candidate output — one that has no stake in the reasoning that produced it.
+  </div>
+
+<p>In a single-window AI workflow, the context that generates an output also judges its adequacy. Even when it is prompted to "be critical" or "try to find faults," it is still evaluating from within the same context that produced the result. Any implicit assumptions, missed premises, or role confusions are shared across both production and validation. That is why closed-loop validation fails: the validator inherits the same structural blind spots as the generator.</p>
+
+<p>Ankyra is designed to do something more modest and more useful. It does not try to be smarter than the other roles. It is valuable because it loads from a different starting point, reads a bounded set of inputs, works under a different mandate, and is not permitted to do the upstream work that produced the output it is evaluating. That is what gives its judgment independence in practice: not superior intelligence, but role separation and context isolation.</p>
+
+<h2>Output Pathways</h2>
+
+<p>The architecture defines three output pathways, each with different authorization requirements and different destinations. The human operator appears in every pathway — there is no route by which an output moves from one layer to another without explicit human awareness and action.</p>
+
+<table class="pathway-table">
+  <thead>
+    <tr>
+      <th>Pathway</th>
+      <th>Output type</th>
+      <th>Handoff logic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Research finding</td>
+      <td><span class="flag flag-handoff">THREAD entry</span></td>
+      <td>Session chat flags a candidate research finding as a named thread. Human operator manually routes the thread to the appropriate layer.</td>
+    </tr>
+    <tr>
+      <td>Applied change</td>
+      <td><span class="flag flag-commit">commit block</span></td>
+      <td>Session chat flags candidate → human carries to Ankyra → Ankyra reviews and generates commit block → human authorizes → project files updated</td>
+    </tr>
+    <tr>
+      <td>Exploration output</td>
+      <td><span class="flag flag-note">informal note</span></td>
+      <td>Exploration chat can produce notes, alternatives, and candidate directions — but no commitmable artifacts. Anything material must still be routed through research and authorization layers.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Why Scope Confirmation Is Non-Negotiable</h2>
+
+<p>One of the most specific rules in the architecture is that every new session chat must explicitly state its scope and routing constext before doing any work that will be treated as load-bearing. This rule at sirst looks administrative. In practice, it prevents a specific and repeatable failure: a session chat solving the wrong problem elegantly.</p>
+
+ <div class="scope-block">
+  <div class="scope-header">Required session-start scope block</div>
+  <div class="scope-body">
+    <p>"This session is reading the Research Proposal for irreducible regaring the semantic fidelity harness in relation to the registered hypothesis and pre-registered measurement commitments."</p>
+    <div class="scope-fields">
+      <span class="scope-key">Role</span><span>Research session chat</span>
+      <span class="scope-key">Target object</span><span>Research Proposal</span>
+      <span class="scope-key">Question</span><span>Irreducible semantic fidelity harness</span>
+      <span class="scope-key">Sources</span><span>Proposal + pre-registration</span>
+      <span class="scope-key">Not doing</span><span>Not reframing the hyphothesis, not bounding the project to the harness as the central claim, not running implementation work</span>
+    </div>
+  </div>
+</div>
+
+ <p>This rule was not designed in advance. It was added after two confirmed failures in which the correct scope was entirely derivable from context — and was still wrong. In the first instance, a literature review was scoped to a subsection of the project when the correct scope was the project hypothesis as a whole. In the second, an audit screening pass was run against the wrong research question. Both failures were invisible until their outputs were reviewed, because in both cases the derived scope produced coherent, well-formed outputs. Coherent outputs from the wrong scope look like correct outputs until they are checked against something external.</p>
+
+<h2>What This Architecture Prevents</h2>
+
+<p>The value of the architecture is most visible in the failure modes it structurally rules out — not just discourages, but makes mechanically difficult by design.</p>
+
+<ul class="fail-list">
+
+  <li class="fail-item">
+    <span class="fail-marker">✕</span>
+    <div class="fail-content">
+      <strong>Closed-loop self-validation of research findings</strong>
+      <p>A session chat cannot authorize its own outputs. Ankyra's independent review — from a context with no memory of the session that generated the finding — provides pressure that the generating context cannot provide for itself.</p>
+      <span class="fail-resolve">Addressed by: the authorization gate (Ankyra), which loads fresh for every review.</span>
+    </div>
+  </li>
+
+  <li class="fail-item">
+    <span class="fail-marker">✕</span>
+    <div class="fail-content">
+      <strong>Research questions pursued inline during implementation</strong>
+      <p>An implementation chat encountering an interesting research question mid-build cannot investigate it — only surface it as a named thread with an explicit routing destination and trigger condition. Implementation context stays implementation context.</p>
+      <span class="fail-resolve">Addressed by: the THREAD entry discipline and the implementation chat's explicit cannot list.</span>
+    </div>
+  </li>
+
+  <li class="fail-item">
+    <span class="fail-marker">✕</span>
+    <div class="fail-content">
+      <strong>Unauthorized changes to project files</strong>
+      <p>No role except Ankyra generates commit blocks. No commit block executes without explicit human authorization. The project files cannot be modified through inertia, automation, or a session chat deciding its own output is ready.</p>
+      <span class="fail-resolve">Addressed by: Ankyra as the single commit-authorized role, with explicit human authorization required per commit.</span>
+    </div>
+  </li>
+
+  <li class="fail-item">
+    <span class="fail-marker">✕</span>
+    <div class="fail-content">
+      <strong>Exploration outputs silently promoted to findings</strong>
+      <p>The exploration chat has no commit pathway at all. An interesting idea developed in an exploration conversation cannot become a project commitment without passing through the human, then Ankyra, then an explicit authorization step. The path from "interesting" to "committed" is long by design.</p>
+      <span class="fail-resolve">Addressed by: the HANDOFF-READY protocol, which flags emergence without elevating it autonomously.</span>
+    </div>
+  </li>
+
+  <li class="fail-item">
+    <span class="fail-marker">✕</span>
+    <div class="fail-content">
+      <strong>Context contamination between research and implementation</strong>
+      <p>An implementation chat loaded with the implementation log and learning notes has no access to the research log's evolving findings. An open research question cannot silently influence implementation decisions made in a context that is not supposed to be doing research.</p>
+      <span class="fail-resolve">Addressed by: role-specific file load orders that restrict what each context knows.</span>
+    </div>
+  </li>
+
+</ul>
+
+<h2>The Broader Principle</h2>
+
+<p>The architectural insight generalizes beyond research programs. Any long-lived project in which an LLM is doing iterative labor across multiple functional categories — investigation, construction, review, exploration — will produce better governance outcomes if those categories are handled by contexts with different mandates, different knowledge loads, and different authorization levels, rather than by a single do-everything context that accumulates all of them.</p>
+
+<p>This is, in essence, the principle of separation of concerns applied to AI collaboration. Software architects do not give every component read-write access to every other component's state. They define interfaces, restrict access, and route changes through explicit handoff points. The same logic applies here — not because AI contexts are untrustworthy in the same way that untested code is, but because contexts without role constraints will do whatever the immediate task seems to require, and a research context doing implementation work, or an implementation context reviewing its own findings, or an exploration context committing its own speculations, produces the same class of failure in each case: outputs authorized by the context that generated them, evaluated against the standards of the task that produced them, without independent pressure from outside.</p>
+
+<p>The four-role architecture does not solve every governance problem. It does not prevent a session chat from generating findings that are individually plausible but collectively incoherent. It does not prevent an implementation chat from making locally sensible decisions that accumulate into a poor architecture. These are problems that require the full governance framework — the defect register, the convergence layer, the Frozen Anchor — to address.</p>
+
+<p>What the architecture does provide is a structural foundation on which that governance can actually operate: defined roles, explicit handoffs, an independent authorization gate, and a human operator who is always in the path between output and commitment. Without that foundation, the rest of the governance stack is applied to outputs that were already authorized by the contexts that produced them. With it, every output has passed through at least one context that had no stake in its production.</p>
+
+<div class="crosslink">
+  <span class="cl-icon">&#8617;</span>
+  <span class="cl-text">This architecture provides the operational layer for the governance framework described in the rest of this series. The Ankyra authorization gate is the implementation of the adversarial audit and convergence judgment from <a href="governing-llm-assisted-research.html">Part I</a>. The role-specific file load orders enforce the authority hierarchy described in <a href="the-frozen-anchor.html">Part II</a>.</span>
+</div>
+
+<div class="series-grid">
+  <div class="series-next"><div class="series-next-label">Read before</div><a href="the-frozen-anchor.html">Part II · The Frozen Anchor</a></div>
+  <div class="series-next"><div class="series-next-label">Companion note</div><a href="governance-architecture.html">A Governance Architecture for LLM-Assisted Research Programs</a></div>
+</div>
+
+<footer>
+  This architecture was designed and refined over multiple sessions on a live research program. The scope confirmation requirement and the THREAD entry discipline were both added in response to observed failures — each rule in the protocols documents a real failure mode that existed before the rule did.
+</footer>
+
+</article>
+</body>
+</html>

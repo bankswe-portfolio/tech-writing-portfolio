@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Governing LLM-Assisted Work — A Framework Series</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:           #F8F5EF;
+  --bg2:          #F0EDE5;
+  --bg3:          #EAE6DE;
+  --text:         #1C1A18;
+  --muted:        #6B6860;
+  --accent:       #B5640A;
+  --accent-light: #FAF0DC;
+  --accent-mid:   #C5A95A;
+  --border:       #DDD9D0;
+}
+
+body {
+  font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+/* ── Layout ── */
+.page {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 72px 40px 96px;
+}
+
+/* ── Hero ── */
+.hero {
+  margin-bottom: 4.5rem;
+}
+
+.series-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.eyebrow-rule {
+  width: 32px;
+  height: 2px;
+  background: var(--accent-mid);
+  flex-shrink: 0;
+}
+
+.eyebrow-text {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+h1 {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1.12;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+
+.hero-thesis {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 620px;
+  margin-bottom: 1.75rem;
+}
+
+.hero-body {
+  font-size: 1.0rem;
+  color: var(--muted);
+  max-width: 620px;
+  line-height: 1.78;
+}
+
+.hero-body p { margin-bottom: 0.9rem; }
+.hero-body p:last-child { margin-bottom: 0; }
+
+/* ── Divider ── */
+.section-rule {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  margin: 3rem 0;
+}
+
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.75rem;
+}
+
+/* ── Essay cards ── */
+.essay-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.essay-card {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 0;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background: var(--bg);
+  transition: border-color 0.15s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.essay-card:hover { border-color: var(--accent-mid); }
+
+.essay-card.featured {
+  border-color: var(--accent-mid);
+  background: var(--accent-light);
+}
+
+/* Left accent strip */
+.card-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 1.25rem 0;
+}
+
+.strip-1 { background: #E3F3EE; color: #0D5C48; }
+.strip-2 { background: #E8E7F6; color: #3A32A0; }
+.strip-3 { background: #FBF5E6; color: #7A5010; }
+
+.card-body {
+  padding: 1.4rem 1.6rem 1.4rem 1.4rem;
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.essay-card.featured .card-body {
+  border-left-color: var(--accent-mid);
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-badge {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 2px 9px;
+  border-radius: 4px;
+  background: var(--bg3);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.start-here {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 2px 9px;
+  border-radius: 4px;
+  background: var(--accent-light);
+  color: var(--accent);
+  border: 1px solid var(--accent-mid);
+}
+
+.card-read {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-left: auto;
+}
+
+.card-title {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.22rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 0.55rem;
+}
+
+.card-abstract {
+  font-size: 0.92rem;
+  color: var(--muted);
+  line-height: 1.62;
+  margin-bottom: 0.9rem;
+}
+
+.card-link {
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.card-link-arrow {
+  font-size: 0.9rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+
+.essay-card:hover .card-link-arrow { transform: translateX(3px); }
+
+/* ── Reading order note ── */
+.reading-note {
+  margin-top: 1.25rem;
+  padding: 0.9rem 1.25rem;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.reading-note strong { color: var(--text); font-weight: 600; }
+
+/* ── About this work ── */
+.about {
+  margin-top: 4rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.about-cell {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.1rem 1.25rem;
+}
+
+.about-cell-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.45rem;
+  display: block;
+}
+
+.about-cell p {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.58;
+  margin-bottom: 0;
+}
+
+/* ── Author block ── */
+.author {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.author-initial {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.author-text {}
+
+.author-name {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.author-bio {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.62;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .page       { padding: 40px 22px 64px; }
+  h1          { font-size: 2.2rem; }
+  .about-grid { grid-template-columns: 1fr; }
+  .essay-card { grid-template-columns: 40px 1fr; }
+  .card-strip { font-size: 0.55rem; }
+  .author     { flex-direction: column; gap: 1rem; }
+}
+
+.utility-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 1.6rem;
+}
+.utility-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.utility-nav a:hover { color: var(--accent); border-bottom-color: var(--accent-mid); }
+.utility-sep { color: var(--border); }
+.series-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 2rem 0 0;
+}
+@media (max-width: 700px) { .series-grid { grid-template-columns: 1fr; } }
+.series-next {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+}
+.series-next-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.45rem;
+}
+.series-next a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+}
+.series-next a:hover { color: var(--accent); }
+footer a, .crosslink a { color: var(--accent); }
+
+.companion-badge { background: #EFEFEA; color: var(--muted); border-color: var(--border); }
+.series-footer-links { margin-top: 2.5rem; font-size: 0.92rem; color: var(--muted); }
+.series-footer-links a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<nav class="utility-nav">
+  <a href="../">← Portfolio</a>
+  <span class="utility-sep">·</span>
+  <a href="index.html">Series Index</a>
+</nav>
+
+  <!-- ── Hero ── -->
+  <header class="hero">
+    <div class="series-eyebrow">
+      <div class="eyebrow-rule"></div>
+      <span class="eyebrow-text">Framework Essays — Concept Work</span>
+    </div>
+
+    <h1>Governing<br>LLM-Assisted Work</h1>
+
+    <p class="hero-thesis">Most advice about using LLMs in knowledge work focuses on better prompts. These essays focus on what better prompts cannot fix.</p>
+
+    <div class="hero-body">
+      <p>When an LLM is doing iterative intellectual labor on a long-lived project — drafting, revising, auditing, proposing alternatives — a specific failure regime emerges that is invisible from inside a single conversation. Documents get cleaner. Scope gets tighter. Everything reads as progress. But the same substantive defects persist in relabeled form, the project quietly becomes a different project, and there is no structural mechanism to detect any of it.</p>
+      <p>This is a governance problem, not a prompting problem. These three core essays describe the framework, the document pattern, and the workflow architecture developed to address it — derived from direct application on a live research program, not from theoretical preferences. A companion architecture note maps the same system as components and implementation status.</p>
+    </div>
+  </header>
+
+  <div class="section-rule"></div>
+  <p class="section-label">The essays — in suggested reading order</p>
+
+  <!-- ── Essay Cards ── -->
+  <div class="essay-list">
+
+    <!-- Essay 1: Frozen Anchor -->
+    <a class="essay-card featured" href="the-frozen-anchor.html">
+      <div class="card-strip strip-1">Part II</div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-badge">Design Pattern</span>
+          <span class="start-here">Start here</span>
+        </div>
+        <h2 class="card-title">The Frozen Anchor</h2>
+        <p class="card-abstract">A practical document design pattern for keeping a long-lived AI-assisted project identical to itself across revision cycles. It defines a frozen identity anchor, an allowed-to-change list, a taxonomy of drift examples, and a version discipline that forces explicit accounting of what changed and what was preserved.</p>
+        <div class="card-link">Read Part II <span class="card-link-arrow">→</span></div>
+      </div>
+    </a>
+
+    <!-- Essay 2: Control Framework -->
+    <a class="essay-card" href="governing-llm-assisted-research.html">
+      <div class="card-strip strip-2">Part I</div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-badge">Framework</span>
+          <span class="card-read">Read after Part II</span>
+        </div>
+        <h2 class="card-title">A Control Framework for LLM-Assisted Research</h2>
+        <p class="card-abstract">The systems- paper. It defines the core governance problem, explains why standard revision loops fail, models the process as a control problem, and derives the structural requirements for a system that can actually govern research definition under weak supervision.</p>
+        <div class="card-link">Read Part I <span class="card-link-arrow">→</span></div>
+      </div>
+    </a>
+
+    <!-- Essay 3: Multi-Role Architecture -->
+    <a class="essay-card" href="multi-role-ai-workflows.html">
+      <div class="card-strip strip-3">Part III</div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-badge">Case Study</span>
+          <span class="card-read">Read after Part II</span>
+        </div>
+        <h2 class="card-title">Designing Multi-Role AI Collaboration Workflows</h2>
+        <p class="card-abstract">The default AI collaboration posture — one context, one conversation, handling everything — produces closed-loop validation at the workflow level. This essay describes a four-role architecture developed on a live project: a research layer, a buill layer, an ideation layer, and a separate authorization gate that is the only context permitted to commit outputs to the project record. Each role is defined by what it cannot do as much as what it can.</p>
+        <div class="card-link">Read Part III <span0class="card-link-arrow">→</span></div>
+      </div>
+    </a>
+
+    <a class="essay-card" href="governance-architecture.html">
+      <div class="card-strip strip-3">Companion</div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-badge companion-badge">Concept Note</span>
+        </div>
+        <h2 class="card-title">A Governance Architecture for LLM-Assisted Research Programs</h2>
+        <p class="card-abstract">A Companion note mapping the framework as a system of components: the identity anchor, authority map, research bundle, audit instrument, defect register, patch layer, re-audit layer, convergence layer, and operator rules.</p>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="section-rule"></div>
+  <p class="section-label">What these pieces are doing</p>
+
+  <div class="about">
+    <div class="about-grid">
+      <div class="about-cell">
+        <span class="about-cell-label">What the series argues</span>
+        <p>Long-lived AI-assisted work needs governance infrastructure, not just better prompts or more iteration. The series argues for three complementary layers: a control framework that defines the governance problem, a document pattern that stabilizes project identity across revision, and a multi-role workflow architecture that breaks closed-loop validation at the process
+          level.</p>
+      </div>
+
+      <div class="about-cell">
+        <span class="about-cell-label">Where this came into focus</span>
+        <p>The framework was not built as an abstract exercise. It emerged while attempting to keep a live research program stable across multiple audit cycles, meaningful revisions, and repeated AI-assisted attempts at problem definition. The source material predates the essays. </p>
+      </div>
+
+      <div class="about-cell">
+        <span class="about-cell-label">What makis this distinctive</span>
+        <p>Most writing about AI-assisted work focuses on prompting, output quality, or evaluation. These pieces focus instead on how to preserve project identity, bound revision, separate authority, and judge convergence over time — the things that must be correct before an AI-assisted program can be said to be well-governed.</p>
+      </div>
+
+      <div class="about-cell">
+        <span class="about-cell-label">Where this fits</span>
+        <p>The adjacent literatures are LLM auditing, research proposal validation, qualitative convergence theory, and weak supervision frameworks. This work sits between them rather than inside any one of them — the combination of frozen identity anchor, persistent defect register, and cross-cycle convergence judgment does not appear to exist as a packaged framework elsewhere.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Author ── -->
+  <div class="author">
+    <div class="author-initial">W</div>
+    <div class="author-text">
+      <div class="author-name">Will</div>
+      <p class="author-bio">Technical writer and independent researcher working at the intersection of knowledge work, AI-assisted processes, and research methodology. This series was developed through direct application on a live research program and reflects an ongoing attempt to describe governance structures for long-lived AI-assisted work.</p>
+    </div>
+  </div>
+
+<p class="series-footer-links"><a href="../">Return to portfolio</a></p>
+
+</div>
+</body>
+</html>
