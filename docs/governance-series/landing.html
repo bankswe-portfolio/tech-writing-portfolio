@@ -339,64 +339,10 @@ h1 {
   .card-strip { font-size: 0.55rem; }
   .author     { flex-direction: column; gap: 1rem; }
 }
-
-.utility-nav {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 0.82rem;
-  color: var(--muted);
-  margin-bottom: 1.6rem;
-}
-.utility-nav a {
-  color: var(--muted);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-}
-.utility-nav a:hover { color: var(--accent); border-bottom-color: var(--accent-mid); }
-.utility-sep { color: var(--border); }
-.series-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  margin: 2rem 0 0;
-}
-@media (max-width: 700px) { .series-grid { grid-template-columns: 1fr; } }
-.series-next {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1rem 1.1rem;
-}
-.series-next-label {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 0.45rem;
-}
-.series-next a {
-  color: var(--text);
-  text-decoration: none;
-  font-weight: 600;
-}
-.series-next a:hover { color: var(--accent); }
-footer a, .crosslink a { color: var(--accent); }
-
-.companion-badge { background: #EFEFEA; color: var(--muted); border-color: var(--border); }
-.series-footer-links { margin-top: 2.5rem; font-size: 0.92rem; color: var(--muted); }
-.series-footer-links a { color: var(--accent); text-decoration: none; }
 </style>
 </head>
 <body>
 <div class="page">
-
-<nav class="utility-nav">
-  <a href="../">← Portfolio</a>
-  <span class="utility-sep">·</span>
-  <a href="index.html">Series Index</a>
-</nav>
 
   <!-- ── Hero ── -->
   <header class="hero">
@@ -411,7 +357,7 @@ footer a, .crosslink a { color: var(--accent); }
 
     <div class="hero-body">
       <p>When an LLM is doing iterative intellectual labor on a long-lived project — drafting, revising, auditing, proposing alternatives — a specific failure regime emerges that is invisible from inside a single conversation. Documents get cleaner. Scope gets tighter. Everything reads as progress. But the same substantive defects persist in relabeled form, the project quietly becomes a different project, and there is no structural mechanism to detect any of it.</p>
-      <p>This is a governance problem, not a prompting problem. These three core essays describe the framework, the document pattern, and the workflow architecture developed to address it — derived from direct application on a live research program, not from theoretical preferences. A companion architecture note maps the same system as components and implementation status.</p>
+      <p>This is a governance problem, not a prompting problem. These three essays describe the framework, patterns, and architecture developed to address it — derived from direct application on a live research program, not from theoretical preferences.</p>
     </div>
   </header>
 
@@ -421,80 +367,75 @@ footer a, .crosslink a { color: var(--accent); }
   <!-- ── Essay Cards ── -->
   <div class="essay-list">
 
-    <!-- Essay 1: Frozen Anchor -->
+    <!-- Essay 1: Frozen Anchor (recommended start) -->
     <a class="essay-card featured" href="the-frozen-anchor.html">
-      <div class="card-strip strip-1">Part II</div>
+      <div class="card-strip strip-1">Framework Note</div>
       <div class="card-body">
         <div class="card-meta">
-          <span class="card-badge">Design Pattern</span>
+          <span class="card-badge">Framework Note</span>
           <span class="start-here">Start here</span>
+          <span class="card-read">~8 min read</span>
         </div>
-        <h2 class="card-title">The Frozen Anchor</h2>
-        <p class="card-abstract">A practical document design pattern for keeping a long-lived AI-assisted project identical to itself across revision cycles. It defines a frozen identity anchor, an allowed-to-change list, a taxonomy of drift examples, and a version discipline that forces explicit accounting of what changed and what was preserved.</p>
-        <div class="card-link">Read Part II <span class="card-link-arrow">→</span></div>
+        <div class="card-title">The Frozen Anchor: A Document Design Pattern for Long-Lived AI-Assisted Projects</div>
+        <p class="card-abstract">A project's biggest risk is not that it fails — it is that it quietly becomes a different project. This essay introduces the Frozen Anchor: a four-section document design pattern that records what a project agreed to be before revision pressure can distort it. Covers the pattern's anatomy, the distinction between acceptable narrowing and drift, version discipline, and a three-question diagnostic test for when the project feels unrecognizable.</p>
+        <span class="card-link">Read essay <span class="card-link-arrow">→</span></span>
       </div>
     </a>
 
     <!-- Essay 2: Control Framework -->
     <a class="essay-card" href="governing-llm-assisted-research.html">
-      <div class="card-strip strip-2">Part I</div>
+      <div class="card-strip strip-2">Concept Essay</div>
       <div class="card-body">
         <div class="card-meta">
-          <span class="card-badge">Framework</span>
-          <span class="card-read">Read after Part II</span>
+          <span class="card-badge">Concept Essay</span>
+          <span class="card-read">~18 min read</span>
         </div>
-        <h2 class="card-title">A Control Framework for LLM-Assisted Research</h2>
-        <p class="card-abstract">The systems- paper. It defines the core governance problem, explains why standard revision loops fail, models the process as a control problem, and derives the structural requirements for a system that can actually govern research definition under weak supervision.</p>
-        <div class="card-link">Read Part I <span class="card-link-arrow">→</span></div>
+        <div class="card-title">A Control Framework for LLM-Assisted Research: Governing Research Definition Under Weak Supervision</div>
+        <p class="card-abstract">LLMs are unreliable in a way that is recursively dangerous: they produce confident, coherent, load-bearing falsehoods that accumulate silently across revision cycles. This essay builds a control-theory model of the research governance problem — mapping reference signals, sensors, state estimation, bounded correction, and anti-windup protections onto a working governance architecture with twelve requirements, three failure modes to guard against, and five explicit decision states for when revision should stop.</p>
+        <span class="card-link">Read essay <span class="card-link-arrow">→</span></span>
       </div>
     </a>
 
     <!-- Essay 3: Multi-Role Architecture -->
     <a class="essay-card" href="multi-role-ai-workflows.html">
-      <div class="card-strip strip-3">Part III</div>
+      <div class="card-strip strip-3">Case Study</div>
       <div class="card-body">
         <div class="card-meta">
           <span class="card-badge">Case Study</span>
-          <span class="card-read">Read after Part II</span>
+          <span class="card-read">~14 min read</span>
         </div>
-        <h2 class="card-title">Designing Multi-Role AI Collaboration Workflows</h2>
-        <p class="card-abstract">The default AI collaboration posture — one context, one conversation, handling everything — produces closed-loop validation at the workflow level. This essay describes a four-role architecture developed on a live project: a research layer, a buill layer, an ideation layer, and a separate authorization gate that is the only context permitted to commit outputs to the project record. Each role is defined by what it cannot do as much as what it can.</p>
-        <div class="card-link">Read Part III <span0class="card-link-arrow">→</span></div>
-      </div>
-    </a>
-
-    <a class="essay-card" href="governance-architecture.html">
-      <div class="card-strip strip-3">Companion</div>
-      <div class="card-body">
-        <div class="card-meta">
-          <span class="card-badge companion-badge">Concept Note</span>
-        </div>
-        <h2 class="card-title">A Governance Architecture for LLM-Assisted Research Programs</h2>
-        <p class="card-abstract">A Companion note mapping the framework as a system of components: the identity anchor, authority map, research bundle, audit instrument, defect register, patch layer, re-audit layer, convergence layer, and operator rules.</p>
+        <div class="card-title">Designing Multi-Role AI Collaboration Workflows: A Four-Layer Architecture for Solo Research Programs</div>
+        <p class="card-abstract">The default AI collaboration posture — one context, one conversation, handling everything — produces closed-loop validation at the workflow level. This essay describes a four-role architecture developed on a live project: a research layer, a build layer, an ideation layer, and a separate authorization gate that is the only context permitted to commit outputs to the project record. Each role is defined by what it cannot do as much as what it can.</p>
+        <span class="card-link">Read essay <span class="card-link-arrow">→</span></span>
       </div>
     </a>
 
   </div>
 
-  <div class="section-rule"></div>
-  <p class="section-label">What these pieces are doing</p>
+  <div class="reading-note">
+    <strong>Reading order.</strong> The Frozen Anchor is the most accessible entry point — a concrete pattern you can apply immediately. The Control Framework essay is the theoretical foundation and is denser; it rewards having the pattern in mind first. The architecture case study is the most implementation-specific and assumes familiarity with the governance problem from the first two.
+  </div>
 
+  <!-- ── About This Work ── -->
   <div class="about">
+    <div class="section-rule"></div>
+    <p class="section-label">About this work</p>
+
     <div class="about-grid">
+
       <div class="about-cell">
-        <span class="about-cell-label">What the series argues</span>
-        <p>Long-lived AI-assisted work needs governance infrastructure, not just better prompts or more iteration. The series argues for three complementary layers: a control framework that defines the governance problem, a document pattern that stabilizes project identity across revision, and a multi-role workflow architecture that breaks closed-loop validation at the process
-          level.</p>
+        <span class="about-cell-label">What these are</span>
+        <p>Concept essays and framework notes developed through direct application on a live, solo LLM-assisted research program. The frameworks, patterns, and protocols described here were built because they were needed — each rule documents a failure mode that existed before the rule did.</p>
       </div>
 
       <div class="about-cell">
-        <span class="about-cell-label">Where this came into focus</span>
-        <p>The framework was not built as an abstract exercise. It emerged while attempting to keep a live research program stable across multiple audit cycles, meaningful revisions, and repeated AI-assisted attempts at problem definition. The source material predates the essays. </p>
+        <span class="about-cell-label">What these are not</span>
+        <p>These are not validated research papers. The frameworks have been applied and refined on one project; they have not been tested across multiple programs, benchmarked against alternatives, or subjected to independent empirical evaluation. They are offered as concept work and qualified practitioner reflection.</p>
       </div>
 
       <div class="about-cell">
-        <span class="about-cell-label">What makis this distinctive</span>
-        <p>Most writing about AI-assisted work focuses on prompting, output quality, or evaluation. These pieces focus instead on how to preserve project identity, bound revision, separate authority, and judge convergence over time — the things that must be correct before an AI-assisted program can be said to be well-governed.</p>
+        <span class="about-cell-label">The provenance</span>
+        <p>All three essays are derived from working artifacts: a live research protocol document, a frozen identity anchor maintained across multiple audit cycles, and an implementation log that records both decisions made and alternatives rejected. The source material predates the essays.</p>
       </div>
 
       <div class="about-cell">
@@ -510,11 +451,9 @@ footer a, .crosslink a { color: var(--accent); }
     <div class="author-initial">W</div>
     <div class="author-text">
       <div class="author-name">Will</div>
-      <p class="author-bio">Technical writer and independent researcher working at the intersection of knowledge work, AI-assisted processes, and research methodology. This series was developed through direct application on a live research program and reflects an ongoing attempt to describe governance structures for long-lived AI-assisted work.</p>
+      <p class="author-bio">Technical writer and independent researcher working at the intersection of knowledge work, AI-assisted processes, and research methodology. This series was developed while building VeriForge — a neuro-symbolic pipeline for LLM-driven interactive systems — which served as the live subject of the governance framework described here.</p>
     </div>
   </div>
-
-<p class="series-footer-links"><a href="../">Return to portfolio</a></p>
 
 </div>
 </body>
