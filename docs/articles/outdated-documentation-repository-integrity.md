@@ -6,23 +6,21 @@
 **Audience:** Technical writers, docs-as-code teams, engineering orgs with CI-driven documentation  
 **Theme:** docs-as-code, CI, referential correctness
 
-## Why this piece matters
+## Why this matters
 
 Outdated documentation is often explained as writers falling behind changes in the codebase. Recent software engineering research reframes part of the problem differently: as a repository integrity issue that can be detected automatically.
 
 That is a meaningful shift because it separates editorial quality from referential correctness.
 
-## What the research reframes
+## What changes
 
 The underlying work looks at documentation that still references variables, functions, or classes after those code elements have been renamed or removed. Instead of relying on manual review, the approach compares documentation against repository revisions to identify references that no longer resolve.
 
-One study reports that across thousands of GitHub projects, most repositories contained at least one outdated code-element reference at some point in their history.
+A follow-on workflow moves this idea into pull requests by introducing a GitHub Actions tool that can scan for outdated code-element references automatically whenever a pull request is submitted.
 
-The follow-on work moves this idea into a pull-request workflow by introducing a GitHub Actions tool that can scan for outdated code-element references automatically whenever a pull request is submitted.
+## Implications for technical writing
 
-## Why it matters for technical writing
-
-For teams working on SDKs, APIs, CLIs, and system documentation, this research highlights two distinct kinds of quality.
+For teams working on SDKs, APIs, CLIs, and system documentation, this research highlights two distinct kinds of quality:
 
 - **Editorial quality:** clarity, structure, tone, examples, and reader guidance
 - **Referential correctness:** whether identifiers, symbols, and code-linked claims still match the current codebase

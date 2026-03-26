@@ -6,13 +6,13 @@
 **Audience:** Technical writers, documentation engineers, teams working on code-linked docs  
 **Theme:** traceability, evaluation, documentation correctness
 
-## Why this piece matters
+## Why this matters
 
 Docs and code evolve at different speeds. When links between them break, impact analysis, refactoring, and onboarding all become harder than they need to be.
 
 A recent study examines whether large language models can help recover those links.
 
-## What the study shows
+## What changes
 
 The authors define the problem as linking natural language documentation to the corresponding code implementations.
 
@@ -22,7 +22,7 @@ On raw link identification, the strongest LLMs materially outperformed the basel
 
 That matters because high precision suggests LLM-proposed links are often valid even when they are incomplete. The paper also looks at whether models can explain relationships and reconstruct trace chains. Even when explanations were not fully correct, the core relationship was often identified accurately.
 
-## Why it matters for technical writing
+## Implications for technical writing
 
 For technical writers, traceability becomes something measurable within a documentation workflow. If a documentation segment can be evaluated against candidate code artifacts in a controlled way, trace validation becomes more repeatable and less purely manual.
 
@@ -32,4 +32,4 @@ The practical implication is not that writers disappear from trace work. It is t
 
 ## Source
 
-- Evaluating the Use of LLMs for Documentation to Code Traceability
+- *Evaluating the Use of LLMs for Documentation to Code Traceability*

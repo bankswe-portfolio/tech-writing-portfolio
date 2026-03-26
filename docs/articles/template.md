@@ -1,60 +1,37 @@
 # Title of the Piece
 
-> One-sentence descriptor of what this piece does for the reader.
+> One-sentence thesis or framing claim.
 
-## Setup
+**Type:** Article / Essay  
+**Audience:** Who this is for  
+**Theme:** Primary topic area
 
-Start with 1–3 paragraphs that establish:
+## Why this matters
 
-- the problem, question, or technical artifact under discussion
-- the immediate context the reader needs
-- why this piece is being written now
+Open with the practical stakes.
 
-## Why It Matters
-
-State the practical stakes clearly.
-
-- Who should care?
+- What problem, paper, tool, or trend is under discussion?
+- Why should a technical writer, documentation engineer, or product team care?
 - What changes if the argument is right?
-- Why is this not just an abstract observation?
 
-## Main Analysis
+## What changes
 
-Develop the core argument or synthesis here.
+Explain the main contribution clearly.
 
-Suggested approaches:
+- What does the paper, tool, or framework actually propose?
+- How is it different from the status quo?
+- What part is genuinely novel or useful?
 
-- move from problem → evidence → implication
-- compare alternative interpretations
-- separate fact, inference, and opinion where useful
-- use subheadings if the argument has distinct phases
+Keep this section concrete. Prefer mechanisms over broad claims.
 
-## Implications for Practice
+## Implications for technical writing
 
-Translate the analysis into action.
+Translate the analysis into practice.
 
-Examples:
+- What does this mean for technical writers?
+- What changes in docs-as-code, CI, developer docs, or documentation systems?
+- What should a reader notice, test, or rethink?
 
-- what technical writers should do differently
-- what product or engineering teams should notice
-- what assumptions no longer hold
-- what future work or open questions remain
+## Source
 
-## Sources / References
-
-List the primary material used in the piece.
-
-- paper, spec, article, or documentation links
-- note if the piece originated as a LinkedIn post or draft memo
-
-## Notes for Revision
-
-Delete this section before publishing.
-
-Questions to ask before you finalize:
-
-- Is there one clear thesis?
-- Is the audience obvious?
-- Does the piece stand on its own without social-media context?
-- Are the claims properly sourced?
-- Is the structure helping the argument rather than just reporting information?
+- Primary source or sources
