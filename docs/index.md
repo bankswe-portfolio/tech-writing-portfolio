@@ -8,7 +8,7 @@ I create documentation that helps technical users adopt complex tools faster and
 **Focus:** SDKs, APIs, conceptual docs, docs-as-code, technical systems  
 **Domains:** defense-adjacent systems, avionics, biomedical platforms, AI-adjacent tooling
 
-[View Resume (PDF) →](https://docs.google.com/document/d/1yv8pqGzOZew67R3HoX8QbaK1VehR5nlt/export?format=pdf)  
+[View Resume (PDF) →](https://docs.google.com/document/d/1ofNnYReq1513wDQm-hKz7ADLEsAgo1yB/export?format=pdf)  
 [LinkedIn →](https://www.linkedin.com/in/william-banks-7a736793/)
 
 ## Selected Case Studies
