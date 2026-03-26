@@ -7,48 +7,540 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#F8F5EF;--bg2:#F0EDE5;--text:#1C1A18;--muted:#6B6860;--accent:#B5640A;--accent-mid:#C5A95A;--border:#DDD9D0}*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);font:400 17px/1.78 'Source Sans 3',sans-serif}.page{max-width:820px;margin:0 auto;padding:56px 32px 88px}.utility-nav{display:flex;gap:.6rem;font-size:.82rem;color:var(--muted);margin-bottom:1.4rem}.utility-nav a{color:var(--muted);text-decoration:none}.utility-nav a:hover,.series-next a:hover{color:var(--accent)}.wip{display:inline-flex;align-items:center;gap:.5rem;background:#FBF5E6;border:1px solid var(--accent-mid);border-radius:6px;padding:.35rem .8rem;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}.wip-dot{width:6px;height:6px;border-radius:50%;background:var(--accent-mid)}.type{display:block;font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem}h1,h2,h3{font-family:'Lora',serif}h1{font-size:clamp(2.05rem,5vw,2.8rem);line-height:1.15;margin-bottom:.6rem}.sub{font-size:1.05rem;color:var(--muted);margin-bottom:1.3rem}.lead{font:italic 1.14rem/1.7 'Lora',serif;color:var(--muted);border-left:4px solid var(--accent-mid);padding-left:1rem;margin-bottom:1.6rem}h2{font-size:1.42rem;margin:2.7rem 0 .9rem;padding-top:1rem;border-top:1px solid var(--border)}p{margin-bottom:1.1rem}.pull{border-left:4px solid var(--accent-mid);background:#FAF0DC;padding:1.15rem 1.45rem;border-radius:0 8px 8px 0;margin:1.75rem 0;font:italic 1.03rem/1.65 'Lora',serif}.grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.4rem 0}.card{background:var(--bg2);border:1px solid var(--border);border-top:3px solid var(--accent-mid);border-radius:0 0 8px 8px;padding:1rem}.card h3{font-size:1rem;margin-bottom:.45rem}.card p{font-size:.93rem;color:var(--muted);margin:0}.status{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;margin:1.4rem 0}.status-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1rem}.status-card h3{font-size:.95rem;margin-bottom:.45rem}.status-card p{font-size:.88rem;color:var(--muted);margin:0}.series-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}.series-next{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1rem}.series-next-label{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}.series-next a,footer a{color:var(--text);text-decoration:none;font-weight:600}.meta{font-size:.95rem;color:var(--muted)}footer{margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--border);font-size:.86rem;color:var(--muted)}@media(max-width:760px){.page{padding:36px 22px 64px}.grid,.status,.series-grid{grid-template-columns:1fr}}</style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:           #F8F5EF;
+  --bg2:          #F0EDE5;
+  --bg3:          #EAE6DE;
+  --text:         #1C1A18;
+  --muted:        #6B6860;
+  --accent:       #B5640A;
+  --accent-light: #FAF0DC;
+  --accent-mid:   #C5A95A;
+  --border:       #DDD9D0;
+}
+
+body {
+  font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.78;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+article {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 64px 40px 96px;
+}
+
+header { margin-bottom: 2.5rem; }
+
+.wip-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: #FBF5E6;
+  border: 1px solid var(--accent-mid);
+  border-radius: 6px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.1rem;
+}
+
+.wip-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-mid);
+  flex-shrink: 0;
+}
+
+.type-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.85rem;
+  display: block;
+}
+
+h1 {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 1.18;
+  color: var(--text);
+  margin-bottom: 0.7rem;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: var(--muted);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.accent-rule { width: 44px; height: 3px; background: var(--accent-mid); border-radius: 2px; }
+
+.lead {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+}
+
+h2 {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 3rem;
+  margin-bottom: 0.9rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+p { margin-bottom: 1.2rem; }
+p:last-child { margin-bottom: 0; }
+strong { font-weight: 600; }
+em { font-style: italic; }
+
+.pullquote {
+  border-left: 4px solid var(--accent-mid);
+  background: var(--accent-light);
+  padding: 1.2rem 1.7rem;
+  margin: 2rem 0;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.65;
+  border-radius: 0 8px 8px 0;
+}
+
+/* ── Diagram wrapper ── */
+.diagram-wrap {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem 1.5rem 1rem;
+  margin: 2.25rem 0;
+  overflow: hidden;
+}
+
+.diagram-caption {
+  font-size: 0.83rem;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 0.9rem;
+  font-style: italic;
+  line-height: 1.55;
+}
+
+/* ── Component glossary ── */
+.comp-list {
+  list-style: none;
+  margin: 1.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.comp-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.comp-item:last-child { border-bottom: none; }
+
+.comp-name {
+  padding: 0.8rem 1.1rem;
+  background: var(--bg2);
+  border-right: 1px solid var(--border);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.45;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+}
+
+.comp-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.comp-desc {
+  padding: 0.8rem 1.1rem;
+  font-size: 0.86rem;
+  color: var(--muted);
+  line-height: 1.58;
+}
+
+/* Component color dots */
+.d-gold   { background: #C5A95A; }
+.d-slate  { background: #7A85A0; }
+.d-teal   { background: #2A8A6A; }
+.d-gray   { background: #9A9690; }
+.d-coral  { background: #C07050; }
+.d-blue   { background: #4A75B5; }
+.d-amber  { background: #B87A20; }
+.d-green  { background: #4A9A5A; }
+.d-purple { background: #7A5AB5; }
+.d-brown  { background: #8A6A50; }
+
+/* ── Build status ── */
+.status-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.75rem;
+  margin: 2rem 0;
+}
+
+.status-cell {
+  border-radius: 8px;
+  padding: 1rem 1.1rem;
+  border: 1px solid;
+}
+
+.sc-built    { background: #DFF5EE; border-color: #1A8A6A; }
+.sc-partial  { background: #FBF5E6; border-color: #C5A95A; }
+.sc-proposed { background: #F0EDE5; border-color: #C5BFB4; }
+
+.sc-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.sc-built    .sc-label { color: #0D5C48; }
+.sc-partial  .sc-label { color: #7A5010; }
+.sc-proposed .sc-label { color: #6B6860; }
+
+.sc-items {
+  list-style: none;
+  font-size: 0.83rem;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.sc-items li::before {
+  content: "–  ";
+  color: var(--border);
+}
+
+/* ── Cross-links ── */
+.crosslink {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin: 2rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.cl-icon { flex-shrink: 0; margin-top: 2px; opacity: 0.7; }
+.cl-text a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.cl-text a:hover { text-decoration: underline; }
+
+/* ── Footer ── */
+footer {
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.84rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  article { padding: 32px 22px 56px; }
+  h1      { font-size: 2rem; }
+  .status-grid { grid-template-columns: 1fr; }
+  .comp-item   { grid-template-columns: 1fr; }
+  .comp-name   { border-right: none; border-bottom: 1px solid var(--border); }
+}
+</style>
 </head>
 <body>
-<div class="page">
-<nav class="utility-nav"><a href="../">← Portfolio</a><span>·</span><a href="index.html">Series Index</a></nav>
+<article>
+
 <header>
-<div class="wip"><span class="wip-dot"></span>Work in progress</div>
-<span class="type">Architecture Note · Companion Concept</span>
-<h1>A Governance Architecture for LLM-Assisted Research Programs</h1>
-<p class="sub">A component view of the system behind the governance series</p>
-<p class="lead">This note is not a fourth essay. It is a companion map of the architecture implied by the other pieces: what the system’s components are, what role each plays, and what remains unbuilt.</p>
+  <div class="wip-banner"><span class="wip-dot"></span> Work in progress</div>
+  <span class="type-tag">Architecture Note — Conceptual Framework</span>
+  <h1>A Governance Architecture for LLM-Assisted Research Programs</h1>
+  <p class="subtitle">Components, relationships, and current build status of a proposed closed-loop research governance system</p>
+  <div class="accent-rule"></div>
 </header>
-<p>The core claim of the series is that long-lived AI-assisted work needs governance infrastructure. This note restates that claim in architectural rather than argumentative form. Instead of focusing on drift, narrowing, or workflow roles separately, it lays out the system as interacting components: identity anchor, authority map, governed object, audit layer, defect memory, bounded revision, re-audit, and convergence judgment.</p>
-<div class="pull">The point of the architecture is not merely to diagnose defects inside one draft. It is to make cross-cycle movement observable, governable, and interruptible.</div>
-<h2>The core components</h2>
-<div class="grid">
-  <div class="card"><h3>Core Intent Memo</h3><p>The frozen identity anchor. Defines what the project is, what must remain preserved, and what would count as drift.</p></div>
-  <div class="card"><h3>Authority Map</h3><p>Distinguishes current governing artifacts from historical calibration artifacts and support materials.</p></div>
-  <div class="card"><h3>Research Bundle</h3><p>The governed object: the canonical proposal and pre-registration under active evaluation.</p></div>
-  <div class="card"><h3>Audit Instrument</h3><p>The adversarial diagnostic layer for coherence, feasibility, identity preservation, and inferential discipline.</p></div>
-  <div class="card"><h3>Defect Register</h3><p>Persistent memory of defects, each with identity, class, severity, locus, and status across cycles.</p></div>
-  <div class="card"><h3>Patch Layer</h3><p>The bounded revision layer that proposes fixes tied explicitly to named defects rather than freeform improvement.</p></div>
-  <div class="card"><h3>Revision Pass</h3><p>The actual update to the bundle made through mapped corrective actions rather than uncontrolled rewriting.</p></div>
-  <div class="card"><h3>Re-Audit Layer</h3><p>Checks whether a revised bundle actually closes defects or merely restates them in cleaner language.</p></div>
-  <div class="card"><h3>Convergence Layer</h3><p>Judges whether the system is progressing, circling, drifting, ready to commit, or ready to stop.</p></div>
-  <div class="card"><h3>Operator Rules / Runbook</h3><p>The usage discipline governing freezes, audit order, revision logging, and terminal decisions.</p></div>
+
+<p class="lead">This note describes a governance architecture in active development — not a finished system, but a coherent design whose components, relationships, and current construction state are mapped below.</p>
+
+<p>The essays in this series argue that LLM-assisted research needs governance infrastructure: a frozen identity anchor, an adversarial audit layer, a persistent defect register, bounded patch generation, and a convergence mechanism that judges progress from defect movement rather than prose quality. This note maps those components as a system — describing what each one does, how they connect, and where the architecture currently stands between concept and implementation.</p>
+
+<p>The purpose is not to claim a complete solution. It is to show the design clearly enough that its logic, its gaps, and its current state of construction are all visible at once.</p>
+
+<h2>The Nine Components</h2>
+
+<p>The architecture breaks into nine functional blocks. The first three establish identity and authority — they are set before any audit begins and are not themselves subject to audit pressure. The remaining six form the operational cycle that runs repeatedly across revision passes.</p>
+
+<ul class="comp-list">
+  <li class="comp-item">
+    <div class="comp-name"><span class="comp-dot d-gold"></span>Core Intent Memo</div>
+    <div class="comp-desc">The frozen identity anchor. Defines what the project is fundamentally about, what narrowing is acceptable, and what would count as drift. Not a draft artifact. Cannot be modified through the audit cycle. Everything else is subordinate to it.</div>
+  </li>
+  <li class="comp-item">
+    <div class="comp-name"><span class="comp-dot d-slate"></span>Authority Map</div>
+    <div class="comp-desc">The artifact-role map. Distinguishes the frozen identity anchor from current governing artifacts, historical calibration artifacts, and lineage records. Prevents authority leakage — the failure mode in which a historical draft or prior audit conclusion silently becomes governing truth.</div>
+  </li>
+  <li class="comp-item">
+    <div class="comp-name"><span class="comp-dot d-teal"></span>Research Bundle</div>
+    <div class="comp-desc">The current governed object: the canonical proposal plus the canonical pre-registration. This is the thing being evaluated, revised, and ultimately judged as commitment-ready or not. Exactly one canonical version exists at any point in time.</div>
+  </li>
+  <li class="comp-item">
+    <div class="comp-name"><span class="comp-dot d-gray"></span>Historical Calibration Set</div>
+    <div class="comp-desc">Earlier drafts, prior audits, pre-/post-audit snapshots. Not current governing truth. Exists to show lineage, prior defect patterns, and revision movement — used to calibrate the audit instrument and assess revision sensitivity, not to govern the present bundle.</div>
+  </li>
+  <li class="comp-item">
+    <div class="comp-name"><span class="comp-dot d-coral"></span>Audit Instrument</div>
+    <div class="comp-desc">The adversarial diagnostic layer. A phased, gated protocol that evaluates the current bundle for internal coherence, cross-artifact coherence, Core Intent preservation, defect structure, feasibility, and inferential discipline. Diagnostic only — it does not itself produce revisions or convergence judgments.</div>
+  </li>
+  <li class="comp-item">
+    <div class="comp-name"><span class="comp-dot d-blue"></span>Defect Register</div>
+    <div class="comp-desc">The structured memory of problems found by audit passes. Each defect is tracked as a persistent object with identity, severity, class, locus, status, and closure evidence. This is what allows the system to reason across cycles — without it, every audit pass starts from scratch and cannot detect circular revision.</div>
+  </li>
+  <li class="comp-item">
+    <div class="comp-name"><span class="comp-dot d-amber"></span>Patch-Generation Layer</div>
+    <div class="comp-desc">The bounded revision mechanism. Converts registered defects into corrective changes explicitly tied to those defect IDs. No unmapped modifications are permitted. This is intended to prevent the common failure mode in which "improving" a document introduces untracked changes that create new defects or mask existing ones.</div>
+  </li>
+  <li class="comp-item">
+    <div class="comp-name"><span class="comp-dot d-green"></span>Re-Audit</div>
+    <div class="comp-desc">The post-revision check. Evaluates the revised bundle — unchanged from what was submitted — and determines whether defects were actually closed, merely restated, or replaced by new ones. A revision pass alone does not prove improvement. Re-audit is what closes that gap.</div>
+  </li>
+  <li class="comp-item">
+    <div class="comp-name"><span class="comp-dot d-purple"></span>Convergence / Terminal-State Layer</div>
+    <div class="comp-desc">The trajectory judge. Operates above the audit layer; it is not the same as audit. Looks across cycles and asks whether blocking defects are decreasing, drift is absent, and the bundle is approaching commitment-readiness — or whether the process is circling, drifting, or should be stopped. Outputs one of five governed decision states.</div>
+  </li>
+</ul>
+
+<h2>The System as a Whole</h2>
+
+<p>The architecture is a feedback control loop, not a linear pipeline. The audit produces a defect register. The defect register drives bounded patches. Patches produce a revised bundle. The revised bundle goes back to audit. The convergence layer watches this loop from above and decides whether the loop is converging or circling.</p>
+
+<!-- ARCHITECTURE DIAGRAM -->
+<div class="diagram-wrap">
+  <svg width="100%" viewBox="0 0 680 430" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M2 1L8.5 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+    <style>
+      .tt { font-size:11px; font-weight:600; fill:#1C1A18; text-anchor:middle; dominant-baseline:central; font-family:'Source Sans 3','Helvetica Neue',Arial,sans-serif; }
+      .ts { font-size:9.5px; font-weight:400; fill:#7A7570; text-anchor:middle; dominant-baseline:central; font-family:'Source Sans 3','Helvetica Neue',Arial,sans-serif; }
+      .tl { font-size:9px; font-weight:400; fill:#A8A4A0; text-anchor:start; dominant-baseline:central; font-family:'Source Sans 3','Helvetica Neue',Arial,sans-serif; }
+      .al { stroke-width:1.1; fill:none; marker-end:url(#arr); }
+      .ad { stroke-width:1; fill:none; stroke-dasharray:4 3; marker-end:url(#arr); }
+    </style>
+
+    <!-- ── Foundation layer ── -->
+    <text style="font-size:8.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;fill:#9A9690;font-family:'Source Sans 3',sans-serif;text-anchor:start" x="24" y="20">Foundation layer — set once, not subject to audit</text>
+    <line x1="24" y1="27" x2="640" y2="27" stroke="#DDD9D0" stroke-width="0.6"/>
+
+    <!-- Core Intent Memo -->
+    <rect x="24" y="38" width="150" height="46" rx="7" fill="#F3EEE0" stroke="#C5A95A" stroke-width="1"/>
+    <text class="tt" x="99" y="55">Core Intent Memo</text>
+    <text class="ts" x="99" y="72">Frozen identity anchor</text>
+
+    <!-- Authority Map -->
+    <rect x="196" y="38" width="142" height="46" rx="7" fill="#EEF0F5" stroke="#7A85A0" stroke-width="1"/>
+    <text class="tt" x="267" y="55">Authority Map</text>
+    <text class="ts" x="267" y="72">Artifact roles</text>
+
+    <!-- Calibration Set (dashed = not governing) -->
+    <rect x="358" y="38" width="152" height="46" rx="7" fill="#F5F4F2" stroke="#C5BFB4" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <text class="tt" x="434" y="55">Calibration Set</text>
+    <text class="ts" x="434" y="72">Lineage / prior audits</text>
+
+    <!-- ── Operational cycle ── -->
+    <text style="font-size:8.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;fill:#9A9690;font-family:'Source Sans 3',sans-serif;text-anchor:start" x="24" y="106">Operational cycle — runs repeatedly</text>
+    <line x1="24" y1="113" x2="640" y2="113" stroke="#DDD9D0" stroke-width="0.6"/>
+
+    <!-- Row 1 -->
+    <!-- Research Bundle -->
+    <rect x="24" y="124" width="148" height="52" rx="7" fill="#E3F3EE" stroke="#1A8A6A" stroke-width="1.2"/>
+    <text class="tt" x="98" y="143">Research Bundle</text>
+    <text class="ts" x="98" y="160">Governed object</text>
+
+    <!-- Audit Instrument -->
+    <rect x="196" y="124" width="148" height="52" rx="7" fill="#FAF0EA" stroke="#C07050" stroke-width="1"/>
+    <text class="tt" x="270" y="143">Audit instrument</text>
+    <text class="ts" x="270" y="160">Phased adversarial</text>
+
+    <!-- Defect Register -->
+    <rect x="362" y="124" width="152" height="52" rx="7" fill="#EAF0FA" stroke="#4A75B5" stroke-width="1"/>
+    <text class="tt" x="438" y="143">Defect register</text>
+    <text class="ts" x="438" y="160">Persistent state</text>
+
+    <!-- Arrow: Bundle → Audit -->
+    <line class="al" stroke="#8A8580" x1="172" y1="150" x2="196" y2="150"/>
+    <!-- Arrow: Audit → Defect Register -->
+    <line class="al" stroke="#8A8580" x1="344" y1="150" x2="362" y2="150"/>
+
+    <!-- Row 2 -->
+    <!-- Revision Pass -->
+    <rect x="24" y="198" width="148" height="52" rx="7" fill="#DFF5EE" stroke="#2A8A4A" stroke-width="1"/>
+    <text class="tt" x="98" y="217">Revision pass</text>
+    <text class="ts" x="98" y="234">Bundle updated</text>
+
+    <!-- Patch-Generation Layer -->
+    <rect x="196" y="198" width="148" height="52" rx="7" fill="#FBF5E0" stroke="#C5A820" stroke-width="1"/>
+    <text class="tt" x="270" y="217">Patch generation</text>
+    <text class="ts" x="270" y="234">Bounded / traceable</text>
+
+    <!-- Arrow: Defect Register → Patch Gen (down-left, clear of row 2 boxes) -->
+    <!-- Exits DefReg bottom at x=438, goes down to y=224, then left to PatchGen right edge -->
+    <path class="al" stroke="#8A8580" d="M 438 176 L 438 224 L 344 224"/>
+    <!-- Arrow: Patch Gen → Revision -->
+    <line class="al" stroke="#8A8580" x1="196" y1="224" x2="172" y2="224"/>
+
+    <!-- Row 3 -->
+    <!-- Re-Audit (col 2 only) -->
+    <rect x="196" y="272" width="148" height="52" rx="7" fill="#F0EDE5" stroke="#9A9690" stroke-width="0.8"/>
+    <text class="tt" x="270" y="291">Re-audit</text>
+    <text class="ts" x="270" y="308">Post-revision check</text>
+
+    <!-- Arrow: Revision → Re-audit (single clean L-path) -->
+    <path class="al" stroke="#8A8580" d="M 98 250 L 98 298 L 196 298"/>
+
+    <!-- Arrow: Re-audit → Defect Register (outer loop — exits right, goes up, enters DefReg right edge) -->
+    <!-- Uses x=530 which is clear of all boxes in rows 2-3 -->
+    <path class="al" stroke="#8A8580" d="M 344 298 L 530 298 L 530 150 L 514 150"/>
+    <!-- "update status" label along the right vertical -->
+    <text class="tl" x="533" y="224">update status</text>
+
+    <!-- ── Convergence layer ── -->
+    <text style="font-size:8.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;fill:#9A9690;font-family:'Source Sans 3',sans-serif;text-anchor:start" x="24" y="348">Convergence layer — operates above the cycle</text>
+    <line x1="24" y1="355" x2="640" y2="355" stroke="#DDD9D0" stroke-width="0.6"/>
+
+    <!-- Convergence Box (wide enough to contain defect movement line at x=555) -->
+    <rect x="24" y="366" width="536" height="46" rx="7" fill="#EEEDF8" stroke="#5B52C8" stroke-width="1"/>
+    <text class="tt" x="292" y="383">Convergence / terminal-state layer</text>
+    <text class="ts" x="292" y="400">Cross-cycle trajectory judge — continue / commit / narrow / pause / kill</text>
+
+    <!-- ── Defect movement (dashed blue) ── -->
+    <!-- Exits DefReg right side, goes to x=555, runs cleanly down to Convergence -->
+    <path class="ad" stroke="#5B52C8" d="M 514 124 L 555 124 L 555 366"/>
+    <text class="tl" x="558" y="248">defect movement</text>
+
+    <!-- ── Anti-drift gate (dashed amber) ── -->
+    <!-- Runs along left margin x=12 — entirely outside all boxes -->
+    <path class="ad" stroke="#C5A95A" d="M 24 84 L 12 84 L 12 366 L 24 366"/>
+    <!-- Label: small horizontal amber text inside convergence box, left side -->
+    <text style="font-size:8px;fill:#C5A95A;font-family:'Source Sans 3',sans-serif;text-anchor:start;dominant-baseline:central;font-style:italic" x="34" y="413">&#9654; Core Intent preservation gate</text>
+
+  </svg>
+  <p class="diagram-caption">Figure 1 — System architecture. Foundation layer (top): set before any audit begins. Operational cycle (middle): runs repeatedly — solid arrows show the main flow. Convergence layer (bottom): judges trajectory across cycles. Dashed amber line = Core Intent anti-drift gate. Dashed blue line = defect movement feeding the convergence judgment.</p>
 </div>
-<h2>Current build status</h2>
-<div class="status">
-  <div class="status-card"><h3>Built or substantially implemented</h3><p>Core Intent Memo, authority distinctions, governed bundle, and a real phased audit instrument already exist in working form.</p></div>
-  <div class="status-card"><h3>Specified but incomplete</h3><p>The defect-register logic, historical calibration discipline, and convergence logic are conceptually defined but not yet fully operationalized.</p></div>
-  <div class="status-card"><h3>Still mostly conceptual</h3><p>The patch layer, re-audit layer, and full operator runbook remain design work rather than completed infrastructure.</p></div>
+
+<p>Three relationships in this diagram carry most of the governance weight. The Core Intent Memo exerts continuous downward pressure — the anti-drift constraint — on the convergence layer, meaning no convergence judgment is valid if identity has been lost. The Defect Register is the central memory: it receives findings from audit, drives the patch layer, receives status updates from re-audit, and feeds the convergence judgment. The convergence layer never touches the bundle directly; it only reads the defect register across cycles.</p>
+
+<h2>The Audit Instrument in Practice</h2>
+
+<p>Of the nine components, the audit instrument is the most developed. The current implementation is a phased, gated protocol in which each phase must complete and stop before the next begins. This gating is not bureaucratic formality — it prevents the most common failure mode of LLM-assisted evaluation, which is that a context asked to diagnose <em>and</em> repair simultaneously will collapse the two into a single pass that does neither well.</p>
+
+<p>The phases move in a specific sequence: reconstruction of what the bundle actually says → steelmanning the strongest case for it → adversarial challenge → falsification attempt and inference-license mapping → novelty, feasibility, and solo-researcher realism → severity-ranked defect log and bottom-line judgment → revision brief → optional red-team rewrite skeleton. The defect log produced in Phase 6 is the intended input to the Defect Register. The revision brief in Phase 7 is the intended input to the Patch-Generation Layer.</p>
+
+<p>The non-negotiable rules built into the protocol reflect specific failure modes observed in earlier, less structured audit passes: a rule against collapsing phases because an eager context will skip reconstruction and go straight to criticism; a rule distinguishing fact from inference from assumption from speculation; a rule against treating a cleaner or narrower draft as automatically better if it has silently drifted from the Core Intent Memo.</p>
+
+<h2>Current Build Status</h2>
+
+<p>The architecture is partially implemented. Being honest about which components are operational, which are partially built, and which remain at the design stage is itself a governance discipline.</p>
+
+<div class="status-grid">
+  <div class="status-cell sc-built">
+    <span class="sc-label">Designed and implemented</span>
+    <ul class="sc-items">
+      <li><strong>Core Intent Memo</strong> — frozen identity anchor, versioned and locked</li>
+      <li><strong>Authority Map</strong> — artifact-role hierarchy, written and governing</li>
+      <li><strong>Governance problem statement</strong> — fully specified, locked</li>
+      <li><strong>Audit instrument</strong> — phased adversarial protocol, implemented and calibrated</li>
+      <li><strong>Research Bundle</strong> — canonical proposal and pre-registration designated</li>
+    </ul>
+  </div>
+
+  <div class="status-cell sc-partial">
+    <span class="sc-label">Partially specified</span>
+    <ul class="sc-items">
+      <li><strong>Defect Register</strong> — schema defined, not yet formalized as an operating layer</li>
+      <li><strong>Audit design brief</strong> — substantial work exists, not yet formally closed</li>
+      <li><strong>Historical calibration set</strong> — artifacts exist, calibration memo not yet written</li>
+      <li><strong>Convergence layer</strong> — fully specified conceptually, not yet implemented</li>
+    </ul>
+  </div>
+
+  <div class="status-cell sc-proposed">
+    <span class="sc-label">Proposed / not yet built</span>
+    <ul class="sc-items">
+      <li><strong>Patch-generation layer</strong> — design brief not yet started</li>
+      <li><strong>Re-audit instrument</strong> — conceptually implied, not yet specified separately</li>
+      <li><strong>Operator runbook</strong> — implicit in protocols, not yet consolidated</li>
+      <li><strong>Full governance cycle</strong> — end-to-end locked cycle not yet executed</li>
+    </ul>
+  </div>
 </div>
-<h2>Why this architecture matters</h2>
-<p>Without an explicit architecture, long-lived AI-assisted work defaults to ad hoc iteration. The same context generates, critiques, revises, and implicitly authorizes its own outputs. That is exactly the closed-loop condition the larger series is trying to break.</p>
-<p>By making the components explicit, the architecture forces a more honest question: what part of the governance stack actually exists, and what part is still aspiration? That distinction matters if these ideas are going to be taken seriously as working method rather than merely attractive theory.</p>
-<p class="meta">This note is intentionally conceptual and still evolving. It is included as a companion artifact because it helps situate the rest of the series as a system rather than as four disconnected pieces of writing.</p>
-<div class="series-grid">
-  <div class="series-next"><div class="series-next-label">Core framework</div><a href="governing-llm-assisted-research.html">Part I · A Control Framework for LLM-Assisted Research</a></div>
-  <div class="series-next"><div class="series-next-label">Recommended entry</div><a href="the-frozen-anchor.html">Part II · The Frozen Anchor</a></div>
+
+<p>The most consequential gap is the Defect Register. Without a persistent, formally structured register, each audit cycle produces findings that are not reliably tracked to prior findings. Defects can be rephrased, redistributed, or silently dropped across revision cycles without the system detecting it — which is precisely the failure mode the register is designed to prevent. The audit instrument is strong. The memory layer it feeds is not yet operating.</p>
+
+<h2>What This Architecture Is Not</h2>
+
+<p>Two clarifications are worth making explicit, because the architecture can be misread in both directions.</p>
+
+<p>This is not a claim that the governance problem is solved. The framework described here was derived from direct application on a live program, the audit instrument has been implemented and calibrated, and the conceptual architecture is coherent. But several critical components are unbuilt, no independent validation has been performed, and the convergence layer — which is the component that would justify calling this a complete governance system — exists only as a specification. What exists is a partially implemented architecture with a working diagnostic layer and an unfinished trajectory-judgment layer.</p>
+
+<p>It is also not a claim that this approach is the only viable one. The adjacent literatures — weak supervision frameworks, registered reports, qualitative saturation theory, LLM auditing research — each address parts of the problem from different angles. The distinctive claim here is narrower: that the combination of frozen identity anchor, authority-mapped artifacts, persistent defect register, and cross-cycle convergence judgment constitutes a coherent approach to the governance problem that does not appear to exist as a packaged framework elsewhere. Whether that claim survives independent scrutiny remains open.</p>
+
+<div class="pullquote">
+  The architecture is not finished. It is, however, designed from the correct starting point — understanding the failure modes first, and building mechanisms that address them structurally rather than through better prompting.
 </div>
-<footer>This architecture note is a companion to the main series. It shows the current system shape and build status rather than pretending the full governance stack is already complete.</footer>
+
+<div class="crosslink">
+  <span class="cl-icon">&#8617;</span>
+  <span class="cl-text">This architecture note is a companion to the three-essay series on governing LLM-assisted work. The essays cover the same framework at the conceptual level: the control-theory framing and twelve requirements in <a href="governing-llm-assisted-research.html">Part I</a>, the Frozen Anchor design pattern in <a href="the-frozen-anchor.html">Part II</a>, and the multi-role workflow architecture in <a href="multi-role-ai-workflows.html">Part III</a>. This note maps the same framework as a system of components.</span>
 </div>
+
+<footer>
+  This architecture is under active development. Component status reflects the current state of a live application. The audit instrument is implemented and calibrated; remaining components are at various stages of design and specification. This note will be updated as the system develops.
+</footer>
+
+</article>
 </body>
 </html>
