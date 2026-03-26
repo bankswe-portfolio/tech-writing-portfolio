@@ -1,34 +1,43 @@
 # DocAgent and Multi-Agent Documentation Pipelines
 
-Meta AI’s DocAgent paper offers a useful look at what AI-assisted documentation pipelines might become in real software environments.
+> Multi-agent documentation systems are starting to look less like novelty demos and more like early versions of documentation CI.
 
-The paper frames a familiar problem: even well-maintained repositories often have sparse or outdated docstrings, and the usual single-model approach—prompting an LLM to "write a docstring for this function"—tends to produce incomplete, shallow, or hallucinated output.
+**Type:** Article  
+**Audience:** Technical writers, docs-as-code teams, engineering orgs exploring AI-assisted docs  
+**Theme:** AI-assisted documentation, verification, agentic workflows
 
-DocAgent takes a different approach. Instead of one omniscient model, it orchestrates a team of agents—Reader, Searcher, Writer, and Verifier—each with a distinct role and coordinated by an Orchestrator.
+## Why this piece matters
 
-- The **Reader** inspects a code component to determine what extra context is needed.
-- The **Searcher** retrieves that information from within the repository and external references.
-- The **Writer** generates the docstring using that curated context.
-- The **Verifier** evaluates it against concrete criteria and loops feedback back into the cycle.
+Sparse or outdated docstrings are a common problem, and the usual single-model approach—prompting an LLM to "write a docstring for this function"—often produces shallow or unreliable output.
 
-All of this happens in a topological order that follows real code dependencies. In practice, that means DocAgent documents functions after their dependencies have been described, so each new docstring inherits relevant context rather than trying to rediscover it. That small design choice mirrors how human writers work: we document building blocks before the higher-level constructs that depend on them.
+Meta AI’s **DocAgent** paper takes a different approach. Instead of relying on one model to do everything, it orchestrates a team of agents—Reader, Searcher, Writer, and Verifier—each with a distinct role coordinated by an Orchestrator.
+
+## What DocAgent changes
+
+The Reader inspects a code component to determine what extra context is needed. The Searcher retrieves that information from within the repository and external references. The Writer drafts the docstring using the curated context. The Verifier evaluates the result against explicit criteria and loops feedback back into the cycle.
+
+The system also processes code in a topological order that follows real dependencies. In practice, that means documenting functions after their dependencies have already been described, so each new docstring inherits relevant context rather than rediscovering it from scratch.
 
 DocAgent scores documentation across three dimensions:
 
-- **Completeness** — does it include the essential elements expected for this kind of code?
-- **Helpfulness** — does it explain why and how the code works, not just what it does?
-- **Truthfulness** — does it stay grounded in the actual code, avoiding hallucinated parameters or behavior?
+- **Completeness** — whether it includes the essential elements expected for that component
+- **Helpfulness** — whether it explains why and how the code works, not just what it does
+- **Truthfulness** — whether it stays grounded in the code rather than hallucinating behavior
 
-What is most interesting here is documentation as a systemic process. The multi-agent setup feels like a prototype of docs-as-agents, where the documentation lifecycle itself becomes a programmable workflow—an ecosystem of retrieval, reasoning, and verification that could run continuously alongside CI/CD.
+That framing is the real contribution. The paper treats documentation as a system process rather than a one-shot generation problem.
 
-For teams living in a docs-as-code world, this feels like an inflection point. We already lint, build, and deploy docs automatically; now we are starting to see frameworks that can generate and validate them with comparable rigor.
+## Why it matters for technical writing
+
+The multi-agent setup feels like a prototype of docs-as-agents, where the documentation lifecycle itself becomes a programmable workflow of retrieval, reasoning, and verification that can run alongside CI/CD.
+
+For teams already living in a docs-as-code world, this is a meaningful shift. We already lint, build, and deploy docs automatically. The next layer is systems that can generate and validate them with comparable rigor.
 
 That raises practical questions:
 
-- Could agentic systems become part of a documentation CI, flagging missing context or outdated examples automatically?
+- Could agentic systems become part of documentation CI, flagging missing context or outdated examples automatically?
 - How might these methods help internal SDK or API teams where context is scattered across hundreds of modules?
-- What would it mean for human writers if AI tools began to own the first-draft stage entirely?
+- What changes for human writers if AI tools begin to own the first-draft stage?
 
 ## Source
 
-- *DocAgent: A Multi-Agent System for Automated Code Documentation Generation* ([arXiv](http://arxiv.org/abs/2504.08725))
+- *DocAgent: A Multi-Agent System for Automated Code Documentation Generation*

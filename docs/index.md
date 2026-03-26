@@ -4,6 +4,10 @@ Technical writer and research engineer focused on developer documentation, compl
 
 I create documentation that helps technical users adopt complex tools faster and helps engineering teams scale clarity alongside product complexity.
 
+**10+ years** across technical writing and research engineering  
+**Focus:** SDKs, APIs, conceptual docs, docs-as-code, technical systems  
+**Domains:** defense-adjacent systems, avionics, biomedical platforms, AI-adjacent tooling
+
 [View Resume (PDF) →](https://docs.google.com/document/d/1yv8pqGzOZew67R3HoX8QbaK1VehR5nlt/export?format=pdf)  
 [LinkedIn →](https://www.linkedin.com/in/william-banks-7a736793/)
 
@@ -36,16 +40,34 @@ I create documentation that helps technical users adopt complex tools faster and
 
 ## Articles & Essays
 
-I also write short analytical pieces on where technical writing is heading as it becomes more tightly integrated with AI systems, docs-as-code workflows, and modern software delivery.
+I also write analytical pieces on where technical writing is heading as it becomes more tightly integrated with AI systems, docs-as-code workflows, and modern software delivery.
 
-[Browse Articles & Essays →](./articles/)
+<div class="grid cards" markdown>
 
-## What I Bring
+-   ## OASBuilder and Automation-Ready API Docs
+    Why API documentation is becoming directly relevant to machine-readable interfaces and downstream automation.
 
-- **Developer documentation:** SDK guides, API/reference docs, conceptual explainers, onboarding flows
-- **Docs-as-code practice:** Markdown, AsciiDoc, MkDocs, docToolchain, CI-driven publishing
-- **Complex domain fluency:** defense-adjacent systems, avionics standards, biomedical research platforms
-- **Research-engineering depth:** experience working close to engineers, SMEs, and technical stakeholders on difficult systems
+    **Theme:** API docs, automation, documentation as infrastructure
+
+    [Read article →](./articles/oasbuilder/)
+
+-   ## DocAgent and Multi-Agent Documentation Pipelines
+    What multi-agent generation and verification workflows suggest about the future of documentation CI.
+
+    **Theme:** AI-assisted docs, verification, agentic workflows
+
+    [Read article →](./articles/docagent/)
+
+-   ## Outdated Documentation as a Repository Integrity Problem
+    Why certain documentation defects should be treated like CI-detectable repository failures instead of editorial drift.
+
+    **Theme:** docs-as-code, CI, referential correctness
+
+    [Read article →](./articles/outdated-documentation-repository-integrity/)
+
+</div>
+
+[Browse all Articles & Essays →](./articles/)
 
 ## How to Read This Portfolio
 

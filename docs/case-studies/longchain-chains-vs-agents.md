@@ -1,5 +1,10 @@
-
 # Chains vs. Agents in LangChain
+
+> Conceptual guide for developers choosing between fixed workflows and agentic architectures.
+
+**Sample type:** Conceptual explainer  
+**Focus:** mental models, diagrams, onboarding clarity  
+**Context:** Independent portfolio sample; not official LangChain documentation
 
 !!! note "About This Writing Sample"
     This is *not* official LangChain documentation.
@@ -10,6 +15,16 @@
     All claims and definitions are aligned with the latest LangChain & LangGraph docs (v0.2).  
     References: [LangChain Introduction](https://python.langchain.com/docs/introduction/) | [Concepts: Agents](https://python.langchain.com/docs/concepts/agents/) | [LangGraph: Why LangGraph](https://langchain-ai.github.io/langgraph/concepts/why-langgraph/) | [LangSmith Docs](https://docs.langchain.com/langsmith/home)
 
+## What This Sample Demonstrates
+
+This piece is meant to show how I handle conceptual documentation for a technical audience that needs a working mental model before implementation details.
+
+It demonstrates:
+
+- clarifying two closely related concepts without flattening their differences
+- using analogy and comparison to reduce cognitive load
+- integrating diagrams and side-by-side structure to support comprehension
+- connecting a local explanation to a broader product ecosystem
 
 ## Welcome: Why You Should Care
 
@@ -36,7 +51,6 @@ By the end, you’ll understand:
 - How they fit into the broader LangChain ecosystem: **LangGraph** (for controllable, stateful agents and workflows) and **LangSmith** (for tracing, evaluating, and monitoring).
 
 In the sections that follow, we’ll compare Chains and Agents side by side, highlight use cases, share diagrams, and show how these concepts connect to the modern LangChain stack.
-
 
 ## Chains vs. Agents: Picture It
 
@@ -145,7 +159,6 @@ If not, use an Agent — and for production, build it with LangGraph for control
 | Chains   | Brittle if a step expects perfectly formatted input | Validate and normalize inputs early; keep steps small and composable |
 | Agents   | LLM chooses the wrong tool or loops        | Limit toolset initially, set iteration/time limits, and add observability |
 
-
 **Comfort check:**  
 
 It’s normal if your first Agent feels chaotic. 
@@ -188,8 +201,6 @@ You now have the mental model:
 
 By now, Chains vs. Agents should feel less like jargon and more like **clear tools in your kit**. 
 You’re ready to choose the right one with confidence—and you’ve got the ecosystem pieces (LangGraph + LangSmith) to grow from demo to production.
-
-👏 That’s it! You’re ready to put Chains and Agents to work.
 
 ## Resources
 

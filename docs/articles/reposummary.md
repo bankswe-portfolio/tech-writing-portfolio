@@ -1,28 +1,32 @@
 # RepoSummary and Feature-Level Traceability
 
-A useful question for automated documentation is not only how docs should be generated, but what they should be grounded in.
+> Repository summaries become more useful when they are grounded in functional features rather than directory structure alone.
 
-*RepoSummary: Feature-Oriented Summarization and Documentation Generation for Code Repositories* argues that many documentation failures stem from choosing the wrong unit of abstraction. Most existing approaches summarize repositories according to directory structure, even though this often does not reflect how systems are actually understood or worked on.
+**Type:** Article  
+**Audience:** Technical writers, developer docs teams, documentation engineers  
+**Theme:** feature-level docs, repository understanding, traceability
 
-As the authors put it:
+## Why this piece matters
 
-> "Existing repository summarization techniques primarily focus on summarizing code according to the directory tree, which is insufficient for tracing high-level features to the methods that collaboratively implement them."
+A persistent question in automated documentation is not just how to generate summaries, but what those summaries should be grounded in.
 
-RepoSummary instead treats functional features as first-class documentation units. Features are identified by clustering related methods and files, then summarized while preserving explicit links back to the code that implements them. Documentation is organized around those features rather than folders.
+*RepoSummary: Feature-Oriented Summarization and Documentation Generation for Code Repositories* argues that many repository overviews fail because they summarize according to the directory tree, even though that is rarely how developers or writers actually understand a system.
 
-The central idea is traceability. Documentation claims are not evaluated by fluency or completeness alone, but by whether they can be followed back to concrete code elements. The paper emphasizes this explicitly:
+## What RepoSummary changes
 
-> "It is essential for developers to quickly grasp the overall architecture and core functionalities from the perspective of functional features, rather than reading through individual code files one by one."
+The paper states that existing techniques are "insufficient for tracing high-level features to the methods that collaboratively implement them." RepoSummary instead treats functional features as first-class documentation units.
 
-This makes RepoSummary a useful complement to DocAgent. DocAgent focuses on improving documentation quality through role separation and verification. RepoSummary focuses on semantic alignment, asking whether documented features actually correspond to real behavior in the codebase.
+Features are identified by clustering related methods and files, then summarized while preserving explicit links back to the code that implements them. Documentation is organized around those features rather than around folders.
 
-The authors’ evaluation supports this framing. Compared to a state-of-the-art baseline, RepoSummary improves both feature coverage and traceability:
+That makes traceability central. Documentation claims are not judged by fluency or completeness alone, but by whether they can be followed back to concrete code elements. The paper reports improvements both in feature coverage and in file-level traceability recall relative to a strong baseline.
 
-> "RepoSummary increases the complete coverage rate of features in manual documentation from 61.2% to 71.1% on average, and improves file-level traceability recall from 29.9% to 53.0%."
+## Why it matters for technical writing
 
-For technical writers working on SDKs, APIs, and platform documentation, this distinction matters. Feature-level docs are often where users orient themselves, and also where drift is hardest to detect. A traceable baseline gives writers something stable to build on, rather than starting from an unstructured summary or a stale README.
+For technical writers working on SDKs, APIs, and platform documentation, this distinction matters because feature-level docs are often where users orient themselves and where drift is hardest to detect.
 
-RepoSummary does not try to replace human authorship. Instead, it treats documentation as a derived artifact of the system itself. When docs move through the same analytical and validation pipelines as the software, their reliability reflects the health of the process that produces them.
+A traceable feature-oriented baseline gives writers something more stable to build on than a stale README or a directory summary that does not reflect the actual product surface. It also aligns better with how users think: by capability, workflow, and problem domain rather than by folder layout.
+
+RepoSummary does not replace human authorship. It suggests a stronger substrate for it. Documentation becomes something derived from the system’s real functional structure, which makes later review and maintenance more disciplined.
 
 ## Source
 

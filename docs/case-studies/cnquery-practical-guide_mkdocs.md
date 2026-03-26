@@ -1,5 +1,11 @@
 # Getting Started with cnquery: A Practical Guide
 
+> Task-oriented onboarding guide for developers new to cnquery, structured around realistic first-use scenarios.
+
+**Sample type:** Practical guide  
+**Focus:** onboarding, task flow, developer UX  
+**Context:** Application exercise; not official Mondoo documentation
+
 !!! note "About This Writing Sample"
     This is *not* official Mondoo documentation.
 
@@ -13,12 +19,16 @@
     - **Consistent structure and readability** with clear headings, examples, and outputs  
     - **Forward-looking context** connecting standalone use to broader security practices  
 
-    This guide reflects my documentation philosophy:
+## What This Sample Demonstrates
 
-    - Clarity and depth over bare reference  
-    - Resources that support both **hands-on adoption** and **higher-level understanding**  
-    - Structure that works for newcomers while rewarding experienced users  
-    - Content that feels like **part of the product experience**, not an afterthought
+This guide is meant to show how I approach first-use documentation for a technical audience.
+
+It demonstrates:
+
+- onboarding through realistic tasks rather than abstract reference alone
+- explanatory context that connects commands to user goals
+- structure designed to reduce friction for new technical users
+- documentation that treats product understanding and task completion as part of the same experience
 
 ## Guided Introduction
 

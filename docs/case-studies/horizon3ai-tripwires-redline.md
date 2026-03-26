@@ -1,3 +1,10 @@
+# NodeZero Tripwires Redline
+
+> Editorial redline of existing product documentation focused on structure, clarity, and usability.
+
+**Sample type:** Editorial redline  
+**Focus:** information architecture, style consistency, usability  
+**Context:** Application exercise; not official Horizon3.ai documentation
 
 !!! note "About This Writing Sample"
     This is *not* official Horizon3.ai documentation.
@@ -7,19 +14,24 @@
 
     👉 [View the redlined document in Google Docs](https://docs.google.com/document/d/1eXZp9yMg_GLiwDPIDnQ6wOwuL77knbWW1DAMcNjBUN4/edit?usp=sharing)
 
-## My Editorial Approach
+## What I Evaluated
 
-I evaluated the Tripwires documentation at both the **macro level** (overall structure, flow, and navigation) and the **micro level** (style, consistency, and tone).  
-Some of the key areas I addressed:
+I reviewed the Tripwires documentation at both the **macro level** (overall structure, flow, and navigation) and the **micro level** (style, consistency, and tone).
 
-- **Structure & Navigation**: Break long lists into tabs/accordions, add troubleshooting anchors, and introduce flowcharts  
-- **Consistency**: Standardize admonitions, hyperlink style, and UI element formatting  
-- **Voice & Style**: Shift to active voice, resolve sentence fragments, and align terminology with branding  
-- **Audience**: Reduce jargon, make prerequisites explicit, and emphasize actionable instructions  
+Some of the highest-value changes focused on:
 
-This exercise demonstrates my ability to:
+- **Structure & Navigation:** breaking long lists into more scannable sections, adding anchors, and clarifying flow
+- **Consistency:** standardizing admonitions, hyperlink style, and UI element formatting
+- **Voice & Style:** shifting toward active voice, resolving sentence fragments, and tightening terminology
+- **Audience Fit:** reducing jargon, surfacing prerequisites, and making actions more obvious
 
-- Critically evaluate existing documentation  
-- Apply consistent editorial standards  
-- Enhance usability while preserving technical accuracy
+## What This Sample Demonstrates
 
+This piece is meant to show how I approach documentation that already exists but is not yet working as well as it could.
+
+It demonstrates my ability to:
+
+- critically evaluate existing documentation
+- apply consistent editorial standards
+- improve usability without flattening technical accuracy
+- identify structural changes that matter more than sentence-level cleanup alone

@@ -1,26 +1,30 @@
 # Regenerating Software Architecture Descriptions
 
+> Reverse engineering plus constrained LLM abstraction can produce a usable baseline for architecture documentation, even if it cannot replace human interpretation.
+
+**Type:** Article  
+**Audience:** Technical writers, platform teams, engineers maintaining architecture-level documentation  
+**Theme:** software architecture, abstraction, system descriptions
+
+## Why this piece matters
+
 Architecture docs tend to drift for a familiar reason: systems evolve continuously, while architecture descriptions are usually updated manually and infrequently.
 
-A 2025 paper by Hatahet, Knieke, and Rausch looks at this problem from a different angle. Instead of asking how to write better architecture docs, it asks whether architecture descriptions can be derived from the implementation itself.
+A recent paper asks whether software architecture descriptions can be derived from the implementation itself rather than rebuilt manually from scratch every time the system changes.
 
-The authors focus on Software Architecture Descriptions (SADs), which they note are often "missing, incomplete, or partially or severely outdated." When that happens, teams fall back to reading source code directly, even though "source code inherently lacks the necessary architectural abstraction and is thus not suited for broad stakeholder comprehension."
+## What the paper changes
 
-Their proposed solution is deliberately constrained. They combine reverse engineering with an LLM, but the LLM is not asked to infer architecture from raw code.
+The authors focus on Software Architecture Descriptions, which are often missing, incomplete, or outdated. When that happens, teams fall back to reading source code directly, even though source code is not well suited to broad stakeholder comprehension.
 
-The pipeline works in stages. First, reverse engineering extracts a structural representation of the system. This produces a class-level view that is accurate but noisy. The LLM is then used to abstract that representation by identifying what the authors call "architecturally significant elements (core components)."
+Their solution is deliberately constrained. They combine reverse engineering with an LLM, but the model is not asked to infer architecture from raw code. Reverse engineering first extracts a structural representation of the system. The LLM is then used to abstract that representation by identifying architecturally significant elements and producing a dual-view SAD: an abstract component diagram plus state-machine views of key behaviors.
 
-As they state, the goal is to generate "a dual-view SAD: 1) an abstract component diagram capturing the system's structure and 2) a set of state machine diagrams illustrating key component behaviors."
+That division matters. Reverse engineering provides factual grounding. The LLM performs abstraction and summarization on structured inputs rather than inventing architecture from scratch.
 
-The paper is clear about why this division matters. Reverse engineering provides factual grounding. The LLM performs abstraction and summarization on structured inputs, rather than inventing architecture from scratch. This keeps the model's role interpretive rather than authoritative.
-
-The evaluation results are mixed in an instructive way. The approach works well for smaller and moderately complex components. For larger components, especially when behavioral logic becomes intricate, the generated diagrams show gaps and inconsistencies. The authors note that "domain-specific examples notably improved behavioral modeling," while generic prompts performed poorly.
-
-That limitation is part of what makes this work useful. It treats architecture docs as a system artifact with observable failure modes, not as a narrative that is either correct or incorrect by intent alone.
+## Why it matters for technical writing
 
 For technical writers working on SDKs, platforms, and complex systems, the implication is not that architecture docs can be fully automated. It is that baseline architecture descriptions can be regenerated from implementation artifacts, while human effort shifts toward explaining intent, tradeoffs, and design rationale that are not present in the code.
 
-Related research is starting to explore what happens next, including how generated architecture diagrams can remain aligned as systems continue to change. While this paper focuses on generation, keeping those artifacts living over time is the obvious follow-on question.
+The evaluation results are mixed in a useful way. The approach works better for smaller and moderately complex components, while larger components introduce inconsistencies. That makes the paper valuable because it treats architecture docs as a system artifact with observable failure modes, not as a purely narrative deliverable.
 
 ## Source
 

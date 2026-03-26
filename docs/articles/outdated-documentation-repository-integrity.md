@@ -1,27 +1,36 @@
 # Outdated Documentation as a Repository Integrity Problem
 
-Recent documentation research shows a shift in how certain problems are framed. Issues that were once treated primarily as writing gaps are increasingly examined as system-level failures.
+> Some documentation failures are better understood as repository-integrity defects than as ordinary editorial drift.
 
-Outdated documentation is a good example. It is often explained as a result of writers falling behind changes in the codebase. Recent software engineering research approaches it instead as a repository integrity issue that can be detected automatically.
+**Type:** Article  
+**Audience:** Technical writers, docs-as-code teams, engineering orgs with CI-driven documentation  
+**Theme:** docs-as-code, CI, referential correctness
 
-Wen Siang Tan, Markus Wagner, and Christoph Treude study this problem by looking at how documentation references code elements that no longer exist. In their analysis, they report:
+## Why this piece matters
 
-> "We analysed over 3,000 GitHub projects and found that most projects contain … at least one outdated code element reference at some point in their history."
+Outdated documentation is often explained as writers falling behind changes in the codebase. Recent software engineering research reframes part of the problem differently: as a repository integrity issue that can be detected automatically.
 
-The work focuses on a specific failure mode: documentation that still mentions variables, functions, or classes after those elements have been deleted or renamed in the source code. Instead of manual review, the approach compares documentation against repository revisions to identify references that no longer resolve.
+That is a meaningful shift because it separates editorial quality from referential correctness.
 
-The follow-on paper moves this idea into an operational setting. It introduces a pull request workflow:
+## What the research reframes
 
-> "In this paper, we present a GitHub Actions tool that builds on our previous work's approach that GitHub developers can configure to automatically scan for outdated code element references … whenever a pull request is submitted."
+The underlying work looks at documentation that still references variables, functions, or classes after those code elements have been renamed or removed. Instead of relying on manual review, the approach compares documentation against repository revisions to identify references that no longer resolve.
 
-For technical writers working on SDKs, APIs, CLIs, and system documentation, this work highlights two kinds of quality. Editorial quality includes clarity, structure, narrative flow, and examples that help users understand a system. Referential correctness concerns whether identifiers, symbols, and code-linked claims still match the current state of the codebase.
+One study reports that across thousands of GitHub projects, most repositories contained at least one outdated code-element reference at some point in their history.
 
-The second category is where teams often lose time, and it is also where CI fits naturally. One practical takeaway from this research is treating broken references as a signal during continuous integration. Not every documentation issue belongs in a pipeline, but stale API names, removed flags, and dead symbols are typically unambiguous defects. The authors explicitly position automation as a way to make this practical at scale:
+The follow-on work moves this idea into a pull-request workflow by introducing a GitHub Actions tool that can scan for outdated code-element references automatically whenever a pull request is submitted.
 
-> "Using a tool such as GitHub Action … to automate the workflow simplifies the process considerably."
+## Why it matters for technical writing
 
-This work is useful for technical writers because it treats documentation as part of the product itself, not something maintained alongside it. When docs move through the same workflows and checks as the software, their quality reflects the health of the system that produces them. In practice, teams with solid delivery pipelines tend to end up with more reliable documentation, not because they write more carefully, but because the process supports correctness by default.
+For teams working on SDKs, APIs, CLIs, and system documentation, this research highlights two distinct kinds of quality.
 
-## Sources
+- **Editorial quality:** clarity, structure, tone, examples, and reader guidance
+- **Referential correctness:** whether identifiers, symbols, and code-linked claims still match the current codebase
+
+The second category is where CI fits naturally. Not every documentation issue belongs in a pipeline, but stale API names, removed flags, and dead symbols are typically unambiguous defects. Treating those as part of repository health changes documentation from something maintained beside the software into something checked as part of the software system itself.
+
+That does not reduce the role of writers. It gives them a cleaner floor to stand on. Human attention can stay focused on meaning, audience, and usability while the system helps catch mechanically detectable referential drift.
+
+## Source
 
 - Wen Siang Tan, Markus Wagner, and Christoph Treude
