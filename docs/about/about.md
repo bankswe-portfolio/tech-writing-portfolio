@@ -46,5 +46,3 @@ My documentation work tends to prioritize four things:
 ## Background
 
 I’m a technical writer and former research engineer with experience across developer SDKs, APIs, avionics standards, biomedical platforms, and defense-adjacent systems. That combination of writing practice and engineering depth shapes the way I approach documentation: understand the system first, then make it understandable to someone else.
-
-If you want the credential view, use the [resume link on the homepage](../).
