@@ -24,6 +24,7 @@ markdown_extensions:
   - admonition
   - toc:
       permalink: true
+  - md_in_html
   - pymdownx.details
   - pymdownx.superfences:
       custom_fences:
@@ -43,4 +44,6 @@ nav:
       - cnquery Practical Guide: case-studies/cnquery-practical-guide_mkdocs.md
       - NodeZero Tripwires Redline: case-studies/horizon3ai-tripwires-redline.md
       - Chains vs. Agents in LangChain: case-studies/longchain-chains-vs-agents.md
+  - Research Notes:
+      - Overview: research-notes/index.md
   - Workflow & About: about/about.md

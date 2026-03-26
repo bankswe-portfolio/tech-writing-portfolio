@@ -1,6 +1,3 @@
-
-# Getting Started with cnquery: A Practical Guide
-
 # Getting Started with cnquery: A Practical Guide
 
 !!! note "About This Writing Sample"
@@ -23,8 +20,7 @@
     - Structure that works for newcomers while rewarding experienced users  
     - Content that feels like **part of the product experience**, not an afterthought
 
-
-# Getting Started with cnquery: A Guided Introduction
+## Guided Introduction
 
 **What if your systems could answer your questions directly?**  
 
@@ -35,7 +31,6 @@ It’s part of Mondoo’s mission to make security **actionable, approachable, a
 !!! info "Who this is for"
     New to Mondoo or cnquery. 
     Comfortable with a terminal. Want fast, confident answers without reading a full reference.
-
 
 **In 10 minutes you’ll:**
 
@@ -50,7 +45,6 @@ At its core, **cnquery** is an open source, cloud-native command-line tool power
 It integrates with hundreds of resources so you can ask direct questions about cloud, OS, SaaS, containers, and more. 
 When you run a query, you point cnquery at a **target**. 
 Targets can be your **local machine**, a **remote host** over SSH/WinRM, a **website** for TLS checks, a **cloud account**, a **container**, and more. 
-
 
 !!! info "Why this matters"
     Most of us cobble together scripts, grep, and half-remembered commands when problems hit.
