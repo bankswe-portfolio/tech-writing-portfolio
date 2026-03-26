@@ -298,7 +298,7 @@ em { font-style: italic; }
 }
 
 .fail-resolve {
-  font-size: 0.82brem;
+  font-size: 0.82rem;
   color: #0D5C48;
   font-weight: 600;
   margin-top: 0.25rem;
@@ -343,12 +343,12 @@ em { font-style: italic; }
   border-top: 1px solid var(--border);
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 0.2rem 0.8rem;
+  gap: 0.3rem 1rem;
 }
 
-.scope-key { font-weight: 600; color: var(--text); }
+.sf-label { font-weight: 600; color: var(--text); white-space: nowrap; }
 
-/* ── Crosslink ── */
+/* ── Cross-links ── */
 .crosslink {
   background: var(--bg2);
   border: 1px solid var(--border);
@@ -363,92 +363,36 @@ em { font-style: italic; }
   line-height: 1.55;
 }
 
-.cl-icon {
-  font-size: 1rem;
-  flex-shrink: 0;
-  margin-top: 2px;
-  opacity: 0.7;
-}
+.cl-icon { font-size: 1rem; flex-shrink: 0; margin-top: 2px; opacity: 0.7; }
 
 .cl-text a {
   color: var(--accent);
   text-decoration: none;
   font-weight: 600;
 }
-
 .cl-text a:hover { text-decoration: underline; }
 
 /* ── Footer ── */
 footer {
-  margin-top: 3.25rem;
-  padding-top: 1.25rem;
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
   border-top: 1px solid var(--border);
-  font-size: 0.86rem;
+  font-size: 0.84rem;
   color: var(--muted);
-  line-height: 1.58;
+  font-style: italic;
 }
 
 /* ── Responsive ── */
-@media (max-width: 720px) {
-  article { padding: 40px 22px 64px; }
-   h1 { font-size: 2.1rem; }
+@media (max-width: 620px) {
+  article    { padding: 32px 22px 56px; }
+  h1         { font-size: 2rem; }
   .role-grid { grid-template-columns: 1fr; }
-  .pathway-table th, .pathway-table td { font-size: 0.8rem; padding: 0.65rem 0.7rem; }
+  .scope-fields { grid-template-columns: 1fr; }
 }
-
-.utility-nav {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 0.82rem;
-  color: var(--muted);
-  margin-bottom: 1.6rem;
-}
-.utility-nav a {
-  color: var(--muted);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-}
-.utility-nav a:hover { color: var(--accent); border-bottom-color: var(--accent-mid); }
-.utility-sep { color: var(--border); }
-.series-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  margin: 2rem 0 0;
-}
-@media (max-width: 700px) { .series-grid { grid-template-columns: 1fr; } }
-.series-next {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1rem 1.1rem;
-}
-.series-next-label {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 0.45rem;
-}
-.series-next a {
-  color: var(--text);
-  text-decoration: none;
-  font-weight: 600;
-}
-.series-next a:hover { color: var(--accent); }
-footer a, .crosslink a { color: var(--accent); }
 </style>
 </head>
 <body>
 <article>
-
-<nmv class="utility-nav">
-  <a href="../">← Portfolio</a>
-  <span class="utility-sep">·</span>
-  <a href="index.html">Series Index</a>
-</nav>
 
 <header>
   <span class="series-tag">Governing LLM-Assisted Work — Part III of III</span>
@@ -459,105 +403,121 @@ footer a, .crosslink a { color: var(--accent); }
 
 <p class="lead">Most AI collaboration advice treats every conversation as a fresh start. This one treats the AI as a staffed organization.</p>
 
- <p>The default posture when working with an LLM on a complex project is a single ongoing chat — one context, one role, one accumulating conversation that handles research, implementation, review, and ideation interchangeably. This works well for simple tasks. For long-lived projects, it quietly produces a specific class of failure: the same context that generated a finding also evaluates it; the same instance that wrote the code also decides whether to commit it; the same conversation that explored a half-formed idea also treats it as resolved.</p>
+<p>The default posture when working with an LLM on a complex project is a single ongoing chat — one context, one role, one accumulating conversation that handles research, implementation, review, and ideation interchangeably. This works well for simple tasks. For long-lived projects, it quietly produces a specific class of failure: the same context that generated a finding also evaluates it; the same instance that wrote the code also decides whether to commit it; the same conversation that explored a half-formed idea also treats it as resolved.</p>
 
- <p>This is the closed-loop problem applied to workflow design. When one instance of an AI does all the work — generating outputs, reviewing them, and authorizing them — there is no external pressure on any of those judgments. The validator is not independent of the work it is validating. Elegant outputs look valid to the same context that produced them, because the context that produced them has already decided they are adequate.</p>
+<p>This is the closed-loop problem applied to workflow design. When one instance of an AI does all the work — generating outputs, reviewing them, and authorizing them — there is no external pressure on any of those judgments. The validator is not independent of the work it is validating. Elegant outputs look valid to the same context that produced them, because the context that produced them has already decided they are adequate.</p>
 
 <p>The architecture described here addresses this problem by decomposing AI-assisted work into four distinct roles, each with its own mandate, file load order, conduct rules, output responsibilities, and a defined list of things it explicitly cannot do. The roles do not share a context. Each one begins fresh, loaded with only what is appropriate for its function. The human operator is always in the handoff path. And a single meta layer — separate from all research and implementation work — is the only role authorized to commit anything to the project files.</p>
 
 <h2>The Four Roles</h2>
 
-<p>The system separates AI collaboration into four layers. What matters is not just what each role does, but what each role is not allowed to do.</p>
+<p>The architecture is organized around functional separation, not convenience. Each role exists because there is a category of work that produces better outputs — and better governance — when it is done by a context with no knowledge of the other categories of work happening in parallel.</p>
 
-  <div class="role-grid">
-    <div class="role-card rc-session">
-      <span class="rc-tag">Research layer</span>
-      <span class="rc-name">S1NN (session-level research chats)</span>
-      <p class="rc-desc">Runs tasks such as literature read, targeted analysis, conceptual beaming, and session-bound research investigation. Outputs are not directly committable.</p>
-      <div class="rc-cannot"><span class="rc-cannot-label">Cannot: </span>Write implementation code. Authorize its own findings. Commit to project files.</div>
-    </div
-    <div class="role-card rc-impl">
-      <span class="rc-tag">Build layer</span>
-      <span class="rc-name">ANN (implementation chat)</span>
-      <p class="rc-desc">Translates a defined spec into code or implementation-specific deliverables. Works from explicit inputs and THREAD entries, not from open-ended research reasoning.</p>
-      <div class="rc-cannot"><span class="rc-cannot-label">Cannot: </span>Conduct primary research. Reframe project scope. Commit without authorization.</div>
-    </div>
-    <div class="role-card rc-explore">
-      <span class="rc-tag">Ideation layer</span>
-      <span class="rc-name">INN (exploration chat)</span>
-      <p class="rc-desc">Explores open possibilities, alternative models, or speculative directions without any implicit claim of authority. Outputs are exploratory by default.</p>
-      <div class="rc-cannot"><span class="rc-cannot-label">Cannot: </span>Produce commit-ready outputs. Update project files. Substitute speculation for audited evidence.</div>
-    </div>
-    <div class="role-card rc-ankyra">
-      <span class="rc-tag">Authorization layer</span>
-      <span class="rc-name">ENN (Ankyra gate)</span>
-      <p class="rc-desc">The only role authorized to generate commit blocks and determine whether candidate outputs are ready to enter the project record. Loads fresh for each review.</p>
-      <div class="rc-cannot"><span class="rc-cannot-label">Cannot: </span>Conduct primary research. Write implementation code. Commit without explicit human authorization.</div>
-    </div>
+<p>Three of the four roles have generic, descriptive names: Session Chat, Implementation Chat, Exploration Chat. The fourth has a proper name — Ankyra — and the asymmetry is deliberate. Ἄγκυρα is the Greek word for anchor. It is the only role whose function is not defined by what it produces but by what it holds in place: the single fixed point in the architecture that everything else is tethered to. Session chats generate findings. Implementation chats build. Exploration chats speculate. Ankyra does none of those things. Its job is to stay still while everything else moves — to be the context that has not participated in any output it is asked to evaluate, and the only gate through which any output can pass into the permanent project record. Naming it distinguishes it from the others not as a matter of style but as a reminder of its structural role: the anchor does not drift.</p>
+
+<!-- ROLE CARDS -->
+<div class="role-grid">
+
+  <div class="role-card rc-ankyra">
+    <span class="rc-tag">Meta layer</span>
+    <span class="rc-name">Ankyra — Authorization gate</span>
+    <p class="rc-desc">Reviews session and implementation outputs. Generates commit blocks. Audits project documents. Refines protocols. The final gate before any content touches the project files. Loads all five project documents to maintain full awareness of what has and has not been committed.</p>
+    <div class="rc-cannot"><span class="rc-cannot-label">Cannot: </span>Conduct primary research. Write implementation code. Commit without explicit human authorization.</div>
   </div>
 
-<h2>Why the Authorization Gate Matters</h2>
+  <div class="role-card rc-session">
+    <span class="rc-tag">Research layer</span>
+    <span class="rc-name">Session Chat — Primary research</span>
+    <p class="rc-desc">Conducts research sessions, generates findings and citations, resolves named open questions. All outputs are flagged as candidates — none are committed. Operates under full research conduct protocols: citation discipline, epistemic tagging, rival hypothesis discipline, blind spot check.</p>
+    <div class="rc-cannot"><span class="rc-cannot-label">Cannot: </span>Generate commit blocks. Write implementation code. Authorize changes to project files.</div>
+  </div>
+
+  <div class="role-card rc-impl">
+    <span class="rc-tag">Build layer</span>
+    <span class="rc-name">Implementation Chat — Prototype construction</span>
+    <p class="rc-desc">Environment setup, code, prototype construction. Every decision logged with the alternative not taken. Every failure logged — a clean log is an incomplete log. Research questions that arise are surfaced as named threads for session chats, not pursued inline.</p>
+    <div class="rc-cannot"><span class="rc-cannot-label">Cannot: </span>Conduct research. Generate commit blocks. Pursue research questions inline.</div>
+  </div>
+
+  <div class="role-card rc-explore">
+    <span class="rc-tag">Ideation layer</span>
+    <span class="rc-name">Exploration Chat — Loose ideation</span>
+    <p class="rc-desc">Loose questions, half-formed hunches, analogies, adjacent ideas. No citation requirement. No epistemic tagging unless a claim is being seriously entertained for handoff. No commit pathway of any kind. Holds the full project state as silent background context without steering conversation toward existing questions.</p>
+    <div class="rc-cannot"><span class="rc-cannot-label">Cannot: </span>Generate commit blocks of any kind. Pursue any commit pathway. Actively steer toward existing open questions.</div>
+  </div>
+
+</div>
+
+<p>The cannot lists are as important as the role definitions. Role separation only functions as a governance mechanism if each context genuinely cannot perform the other roles' work — not merely that it is instructed not to. The file load orders enforce this structurally: an implementation chat loads the implementation log and learning notes, not the research log. It cannot inadvertently do research it has not been loaded to do.</p>
+
+<h2>The Authorization Gate</h2>
 
 <p>The most important design decision in the architecture is the placement of Ankyra as the single commit-authorized role. This is not an administrative convenience. It is the mechanism that breaks closed-loop validation.</p>
 
+<p>When a session chat produces a finding, that finding was generated by a context that is, by definition, already invested in the question it was investigating. That context's evaluation of its own output has inherent limits — not because of bad faith, but because the framing that produced the finding is still present in the context that would evaluate it. This is the same closed-loop problem that makes self-review unreliable in any knowledge work.</p>
+
+<p>Ankyra loads fresh. It has no memory of the session chat that produced the output. It encounters the candidate finding the way a careful external reviewer would — as text to evaluate against the project's established standards, not as the conclusion of a reasoning process it participated in. The session chat cannot predict whether Ankyra will approve the finding, reframe it, flag it as requiring further verification, or return it as insufficiently supported. That unpredictability is the point.</p>
+
 <div class="pullquote">
   The authorization gate's value is not that it catches more errors. It is that it provides a structurally independent evaluation of every candidate output — one that has no stake in the reasoning that produced it.
-  </div>
+</div>
 
-<p>In a single-window AI workflow, the context that generates an output also judges its adequacy. Even when it is prompted to "be critical" or "try to find faults," it is still evaluating from within the same context that produced the result. Any implicit assumptions, missed premises, or role confusions are shared across both production and validation. That is why closed-loop validation fails: the validator inherits the same structural blind spots as the generator.</p>
-
-<p>Ankyra is designed to do something more modest and more useful. It does not try to be smarter than the other roles. It is valuable because it loads from a different starting point, reads a bounded set of inputs, works under a different mandate, and is not permitted to do the upstream work that produced the output it is evaluating. That is what gives its judgment independence in practice: not superior intelligence, but role separation and context isolation.</p>
-
-<h2>Output Pathways</h2>
+<h2>Handoff Discipline</h2>
 
 <p>The architecture defines three output pathways, each with different authorization requirements and different destinations. The human operator appears in every pathway — there is no route by which an output moves from one layer to another without explicit human awareness and action.</p>
 
+<!-- PATHWAY TABLE -->
 <table class="pathway-table">
   <thead>
     <tr>
-      <th>Pathway</th>
       <th>Output type</th>
-      <th>Handoff logic</th>
+      <th>Flag</th>
+      <th>Authorization path</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Research finding</td>
-      <td><span class="flag flag-handoff">THREAD entry</span></td>
-      <td>Session chat flags a candidate research finding as a named thread. Human operator manually routes the thread to the appropriate layer.</td>
-    </tr>
-    <tr>
-      <td>Applied change</td>
-      <td><span class="flag flag-commit">commit block</span></td>
+      <td>Research findings, resolved open questions</td>
+      <td><span class="flag flag-commit">COMMIT-READY</span></td>
       <td>Session chat flags candidate → human carries to Ankyra → Ankyra reviews and generates commit block → human authorizes → project files updated</td>
     </tr>
     <tr>
-      <td>Exploration output</td>
-      <td><span class="flag flag-note">informal note</span></td>
-      <td>Exploration chat can produce notes, alternatives, and candidate directions — but no commitmable artifacts. Anything material must still be routed through research and authorization layers.</td>
+      <td>Conceptual explanations worth preserving from implementation</td>
+      <td><span class="flag flag-note">NOTE-READY</span></td>
+      <td>Implementation chat flags → human adds directly to learning notes. Bypasses Ankyra. Does not touch the research integrity boundary.</td>
+    </tr>
+    <tr>
+      <td>Ideas from ideation that cross a significance threshold</td>
+      <td><span class="flag flag-handoff">HANDOFF-READY</span></td>
+      <td>Exploration chat flags → human decides whether to carry to Ankyra → Ankyra routes to session chat, implementation chat, or direct commit as appropriate</td>
     </tr>
   </tbody>
 </table>
 
-<h2>Why Scope Confirmation Is Non-Negotiable</h2>
+<p>The NOTE-READY pathway deserves particular attention because it deliberately bypasses Ankyra. Learning notes capture explanations and working understanding that the developer generates during implementation — how a pattern works, why an approach was chosen, what a failure revealed. These are personal reference captures, not governance-sensitive claims. Routing them through Ankyra would add bureaucratic weight without adding integrity value. The architecture distinguishes what needs governance from what merely needs recording.</p>
 
-<p>One of the most specific rules in the architecture is that every new session chat must explicitly state its scope and routing constext before doing any work that will be treated as load-bearing. This rule at sirst looks administrative. In practice, it prevents a specific and repeatable failure: a session chat solving the wrong problem elegantly.</p>
+<p>The HANDOFF-READY pathway from the exploration layer is the most structurally interesting because it is the most constrained. An exploration chat is explicitly forbidden from deciding that a half-formed idea has become a finding. It can only flag that a threshold has been crossed — that a conversation has organically developed into something that bears on a named open question, would change how a resolved question is understood, or warrants a new question that does not yet exist. The human decides whether to elevate. The exploration chat cannot push toward that decision.</p>
 
- <div class="scope-block">
-  <div class="scope-header">Required session-start scope block</div>
+<h2>The Scope Confirmation Requirement</h2>
+
+<p>One failure mode that the role architecture alone does not prevent is scope drift within a session — not the project drifting, but a specific task being executed against the wrong scope because the scope was assumed rather than confirmed. This is subtle and surprisingly common. A context with extensive project knowledge can almost always derive a plausible scope for any given task. Derivability is not confirmation.</p>
+
+<!-- SCOPE BLOCK -->
+<div class="scope-block">
+  <div class="scope-header">Scope confirmation — required before every substantive task</div>
   <div class="scope-body">
-    <p>"This session is reading the Research Proposal for irreducible regaring the semantic fidelity harness in relation to the registered hypothesis and pre-registered measurement commitments."</p>
+    <p>Before executing any substantive task — research passes, screening passes, structured outputs, commit generation, audit steps, implementation work — the AI must state the operative scope in one sentence and receive explicit confirmation before proceeding.</p>
+    <p>A general instruction to "proceed" earlier in the session does not constitute confirmation for a subsequent task. Confirmation does not carry forward across task boundaries.</p>
     <div class="scope-fields">
-      <span class="scope-key">Role</span><span>Research session chat</span>
-      <span class="scope-key">Target object</span><span>Research Proposal</span>
-      <span class="scope-key">Question</span><span>Irreducible semantic fidelity harness</span>
-      <span class="scope-key">Sources</span><span>Proposal + pre-registration</span>
-      <span class="scope-key">Not doing</span><span>Not reframing the hyphothesis, not bounding the project to the harness as the central claim, not running implementation work</span>
+      <span class="sf-label">Must name:</span><span>What task is about to be executed</span>
+      <span class="sf-label"></span><span>What the operative scope of that task is</span>
+      <span class="sf-label"></span><span>What the output will be used for</span>
+      <span class="sf-label">Hard stop:</span><span>The task does not begin until confirmation is received. Derivability is not confirmation.</span>
     </div>
   </div>
 </div>
 
- <p>This rule was not designed in advance. It was added after two confirmed failures in which the correct scope was entirely derivable from context — and was still wrong. In the first instance, a literature review was scoped to a subsection of the project when the correct scope was the project hypothesis as a whole. In the second, an audit screening pass was run against the wrong research question. Both failures were invisible until their outputs were reviewed, because in both cases the derived scope produced coherent, well-formed outputs. Coherent outputs from the wrong scope look like correct outputs until they are checked against something external.</p>
+<p>This rule was not designed in advance. It was added after two confirmed failures in which the correct scope was entirely derivable from context — and was still wrong. In the first instance, a literature review was scoped to a subsection of the project when the correct scope was the project hypothesis as a whole. In the second, an audit screening pass was run against the wrong research question. Both failures were invisible until their outputs were reviewed, because in both cases the derived scope produced coherent, well-formed outputs. Coherent outputs from the wrong scope look like correct outputs until they are checked against something external.</p>
 
 <h2>What This Architecture Prevents</h2>
 
@@ -625,11 +585,6 @@ footer a, .crosslink a { color: var(--accent); }
 <div class="crosslink">
   <span class="cl-icon">&#8617;</span>
   <span class="cl-text">This architecture provides the operational layer for the governance framework described in the rest of this series. The Ankyra authorization gate is the implementation of the adversarial audit and convergence judgment from <a href="governing-llm-assisted-research.html">Part I</a>. The role-specific file load orders enforce the authority hierarchy described in <a href="the-frozen-anchor.html">Part II</a>.</span>
-</div>
-
-<div class="series-grid">
-  <div class="series-next"><div class="series-next-label">Read before</div><a href="the-frozen-anchor.html">Part II · The Frozen Anchor</a></div>
-  <div class="series-next"><div class="series-next-label">Companion note</div><a href="governance-architecture.html">A Governance Architecture for LLM-Assisted Research Programs</a></div>
 </div>
 
 <footer>
