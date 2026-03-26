@@ -27,11 +27,14 @@
     
     
       
-        <title>Mondoo - cnquery Practical Guide - William Banks — Technical Writing Portfolio</title>
+        <title>cnquery Practical Guide - William Banks — Technical Writing Portfolio</title>
       
     
     
       <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -45,10 +48,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
       
     
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -59,7 +64,14 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -104,12 +116,24 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Mondoo - cnquery Practical Guide
+              cnquery Practical Guide
             
           </span>
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -311,6 +335,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cnquery Practical Guide
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -318,7 +360,7 @@
   <span class="md-ellipsis">
     
   
-    Mondoo - cnquery Practical Guide
+    cnquery Practical Guide
   
 
     
@@ -327,6 +369,152 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#guided-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guided Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-cnquery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) What is cnquery?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-install-cnquery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Install cnquery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-your-first-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Your first queries
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3) Your first queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-what-os-am-i-running" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 1 — “What OS am I running?”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-are-my-tls-certs-about-to-expire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 2 — “Are my TLS certs about to expire?”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3-who-has-sudo-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 3 — “Who has sudo access?”
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-real-world-scenario-responding-to-a-cve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) Real-world scenario: Responding to a CVE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-where-cnquery-fits-with-the-mondoo-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Where cnquery fits with the Mondoo Platform
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6) FAQ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-where-to-go-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7) Where to go next
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -347,7 +535,7 @@
   <span class="md-ellipsis">
     
   
-    Horizon3.ai - NodeZero Tripwires Redline
+    NodeZero Tripwires Redline
   
 
     
@@ -375,7 +563,285 @@
   <span class="md-ellipsis">
     
   
-    LangChain - Agents vs Chains Explainer
+    Chains vs. Agents in LangChain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Articles & Essays
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Articles & Essays
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../articles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../articles/oasbuilder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OASBuilder and Automation-Ready API Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../articles/docagent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DocAgent and Multi-Agent Documentation Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../articles/documentation-code-traceability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation-to-Code Traceability with LLMs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../articles/docfetch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DocFetch and Cross-Artifact Documentation Grounding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../articles/reposummary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RepoSummary and Feature-Level Traceability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../articles/software-architecture-descriptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regenerating Software Architecture Descriptions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../articles/outdated-documentation-repository-integrity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outdated Documentation as a Repository Integrity Problem
   
 
     
@@ -410,7 +876,7 @@
   <span class="md-ellipsis">
     
   
-    About the Portfolio
+    Workflow & About
   
 
     
@@ -443,6 +909,141 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#guided-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guided Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-cnquery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) What is cnquery?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-install-cnquery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Install cnquery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-your-first-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Your first queries
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3) Your first queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-what-os-am-i-running" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 1 — “What OS am I running?”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-are-my-tls-certs-about-to-expire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 2 — “Are my TLS certs about to expire?”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3-who-has-sudo-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 3 — “Who has sudo access?”
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-real-world-scenario-responding-to-a-cve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) Real-world scenario: Responding to a CVE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-where-cnquery-fits-with-the-mondoo-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Where cnquery fits with the Mondoo Platform
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6) FAQ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-where-to-go-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7) Where to go next
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -467,7 +1068,6 @@
 
 
 <h1 id="getting-started-with-cnquery-a-practical-guide">Getting Started with cnquery: A Practical Guide<a class="headerlink" href="#getting-started-with-cnquery-a-practical-guide" title="Permanent link">&para;</a></h1>
-<h1 id="getting-started-with-cnquery-a-practical-guide_1">Getting Started with cnquery: A Practical Guide<a class="headerlink" href="#getting-started-with-cnquery-a-practical-guide_1" title="Permanent link">&para;</a></h1>
 <div class="admonition note">
 <p class="admonition-title">About This Writing Sample</p>
 <p>This is <em>not</em> official Mondoo documentation.</p>
@@ -488,7 +1088,7 @@ I chose <code>cnquery</code>, an open-source tool from Mondoo, because it is pub
 <li>Content that feels like <strong>part of the product experience</strong>, not an afterthought</li>
 </ul>
 </div>
-<h1 id="getting-started-with-cnquery-a-guided-introduction">Getting Started with cnquery: A Guided Introduction<a class="headerlink" href="#getting-started-with-cnquery-a-guided-introduction" title="Permanent link">&para;</a></h1>
+<h2 id="guided-introduction">Guided Introduction<a class="headerlink" href="#guided-introduction" title="Permanent link">&para;</a></h2>
 <p><strong>What if your systems could answer your questions directly?</strong>  </p>
 <p>Forget juggling scripts or scrolling through endless logs. 
 cnquery lets you <em>ask your infrastructure plain questions</em> — and get clear answers, instantly.
@@ -659,6 +1259,8 @@ It may write provider plugins unless you disable auto‑update; for strict read�
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -691,7 +1293,7 @@ It may write provider plugins unless you disable auto‑update; for strict read�
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "content.code.copy", "content.action.edit", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "content.code.copy", "content.action.edit", "content.tabs.link", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
