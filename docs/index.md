@@ -15,21 +15,30 @@ I create documentation that helps technical users adopt complex tools faster and
 
 <div class="grid cards" markdown>
 
--   ## cnquery Practical Guide
+-   **cnquery Practical Guide**
+
+    ---
+
     Scenario-driven CLI documentation for a security tool, written to improve task success for technical users.
 
     **Focus:** how-to docs, developer UX, task flow
 
     [Read case study →](./case-studies/cnquery-practical-guide_mkdocs/)
 
--   ## NodeZero Tripwires Redline
+-   **NodeZero Tripwires Redline**
+
+    ---
+
     A structural and editorial redline showing how I tighten flow, reduce ambiguity, and improve usability in existing product docs.
 
     **Focus:** redlining, information architecture, usability
 
     [Read case study →](./case-studies/horizon3ai-tripwires-redline/)
 
--   ## Chains vs. Agents in LangChain
+-   **Chains vs. Agents in LangChain**
+
+    ---
+
     A conceptual explainer for developers choosing between fixed workflows and agentic architectures.
 
     **Focus:** conceptual docs, diagrams, onboarding clarity
@@ -44,21 +53,30 @@ I also write analytical pieces on where technical writing is heading as it becom
 
 <div class="grid cards" markdown>
 
--   ## OASBuilder and Automation-Ready API Docs
+-   **OASBuilder and Automation-Ready API Docs**
+
+    ---
+
     Why API documentation is becoming directly relevant to machine-readable interfaces and downstream automation.
 
     **Theme:** API docs, automation, documentation as infrastructure
 
     [Read article →](./articles/oasbuilder/)
 
--   ## DocAgent and Multi-Agent Documentation Pipelines
+-   **DocAgent and Multi-Agent Documentation Pipelines**
+
+    ---
+
     What multi-agent generation and verification workflows suggest about the future of documentation CI.
 
     **Theme:** AI-assisted docs, verification, agentic workflows
 
     [Read article →](./articles/docagent/)
 
--   ## Outdated Documentation as a Repository Integrity Problem
+-   **Outdated Documentation as a Repository Integrity Problem**
+
+    ---
+
     Why certain documentation defects should be treated like CI-detectable repository failures instead of editorial drift.
 
     **Theme:** docs-as-code, CI, referential correctness
@@ -75,7 +93,10 @@ I also maintain a standalone HTML micro-series on governing long-lived AI-assist
 
 <div class="grid cards" markdown>
 
--   ## Governing LLM-Assisted Work
+-   **Governing LLM-Assisted Work**
+
+    ---
+
     A three-piece framework series plus companion architecture note on how to structure long-lived AI-assisted projects so they do not quietly drift, self-authorize, or converge on the wrong object.
 
     **Best entry point:** The Frozen Anchor
