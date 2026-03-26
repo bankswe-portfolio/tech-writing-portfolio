@@ -18,6 +18,6 @@ Unlike the main portfolio articles, these pieces are presented as a unified set 
 
     **Best entry point:** The Frozen Anchor
 
-    [Open the series landing page →](./governance-series/index.html)
+    [Open the series landing page →](governance-series/index.html)
 
 </div>
